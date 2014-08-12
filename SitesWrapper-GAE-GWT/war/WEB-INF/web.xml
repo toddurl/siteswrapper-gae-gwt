@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.5" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+  <!-- Servlets -->
+  <servlet>
+    <servlet-name>greetServlet</servlet-name>
+    <servlet-class>com.urlisit.siteswrapper.cloud.server.GreetingServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>greetServlet</servlet-name>
+    <url-pattern>/siteswrapper/greet</url-pattern>
+  </servlet-mapping>
+ 
+  <servlet>
+    <servlet-name>rpcServlet</servlet-name>
+    <servlet-class>com.urlisit.siteswrapper.cloud.server.RpcImpl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>rpcServlet</servlet-name>
+    <url-pattern>/siteswrapper/rpc</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>restServlet</servlet-name>
+    <servlet-class>com.urlisit.siteswrapper.cloud.server.RESTful</servlet-class>
+    <init-param>
+      <param-name>GoogleDocsConfigurationDocumentId</param-name>
+      <param-value>1LNbFMzY1feWFr8X4pwFIKtEuEAS1OakKsUNvcuZhy3E</param-value>
+    </init-param>
+    <init-param>
+      <param-name>daoId</param-name>
+      <param-value>1LNbFMzY1feWFr8X4pwFIKtEuEAS1OakKsUNvcuZhy3E</param-value>
+    </init-param>
+    <init-param>
+      <param-name>documentId</param-name>
+      <param-value>1LNbFMzY1feWFr8X4pwFIKtEuEAS1OakKsUNvcuZhy3E</param-value>
+    </init-param>
+    <init-param>
+        <param-name>GwtModuleName</param-name>
+        <param-value>siteswrapper</param-value>
+    </init-param>
+    <init-param>
+        <param-name>GoogleAnalyticsWebPropertyID</param-name>
+        <param-value>UA-23056652-1</param-value>
+    </init-param>
+    <init-param>
+        <param-name>GoogleWebMasterToolsSiteVerificationCode</param-name>
+        <param-value>google39a5a5eb736da7fd</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>restServlet</servlet-name>
+    <url-pattern>/*</url-pattern>
+  </servlet-mapping>
+  
+  
+ <servlet>
+  <servlet-name>SystemServiceServlet</servlet-name>
+  <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
+  <init-param>
+   <param-name>services</param-name>
+   <param-value>com.urlisit.siteswrapper.cloud.server.DeviceInfoEndpoint,com.urlisit.siteswrapper.cloud.server.ItemEndpoint,com.urlisit.siteswrapper.cloud.server.MessageEndpoint,com.urlisit.siteswrapper.cloud.server.PageEndpoint,com.urlisit.siteswrapper.cloud.server.SiteEndpoint,com.urlisit.siteswrapper.cloud.server.StyleEndpoint</param-value>
+  </init-param>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>SystemServiceServlet</servlet-name>
+  <url-pattern>/_ah/spi/*</url-pattern>
+ </servlet-mapping>
+</web-app>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/gcm-server.jar"/>
+	<classpathentry kind="lib" path="/Users/url/Development/eclipse-standard-luna/plugins/com.google.appengine.eclipse.sdkbundle_1.9.8/appengine-java-sdk-1.9.8/lib/opt/user/datanucleus/v2/datanucleus-appengine-2.1.2.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/Users/url/Development/eclipse-standard-luna/plugins/com.google.appengine.eclipse.sdkbundle_1.9.8/appengine-java-sdk-1.9.8/docs/javadoc/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER"/>
+	<classpathentry kind="output" path="war/WEB-INF/classes"/>
+</classpath>

@@ -1,0 +1,332 @@
+{
+ "kind": "discovery#rpcDescription",
+ "etag": "\"MKGA2miAJpVGF7yQTQhsoDXpye8/K-9AmAYhVh_cbs_fgXNVsPEO9PY\"",
+ "discoveryVersion": "v1",
+ "id": "siteendpoint:v1",
+ "name": "siteendpoint",
+ "version": "v1",
+ "description": "This is an API",
+ "ownerDomain": "urlisit.com",
+ "ownerName": "urlisit.com",
+ "packagePath": "siteswrapper.cloud.model",
+ "icons": {
+  "x16": "http://www.google.com/images/icons/product/search-16.gif",
+  "x32": "http://www.google.com/images/icons/product/search-32.gif"
+ },
+ "protocol": "rpc",
+ "rootUrl": "https://towingenterpriseexecutive.appspot.com/_ah/api/",
+ "rpcUrl": "https://towingenterpriseexecutive.appspot.com/_ah/api/rpc",
+ "rpcPath": "/_ah/api/rpc",
+ "parameters": {
+  "alt": {
+   "type": "string",
+   "description": "Data format for the response.",
+   "default": "json",
+   "enum": [
+    "json"
+   ],
+   "enumDescriptions": [
+    "Responses with Content-Type of application/json"
+   ],
+   "location": "query"
+  },
+  "fields": {
+   "type": "string",
+   "description": "Selector specifying which fields to include in a partial response.",
+   "location": "query"
+  },
+  "key": {
+   "type": "string",
+   "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+   "location": "query"
+  },
+  "oauth_token": {
+   "type": "string",
+   "description": "OAuth 2.0 token for the current user.",
+   "location": "query"
+  },
+  "prettyPrint": {
+   "type": "boolean",
+   "description": "Returns response with indentations and line breaks.",
+   "default": "true",
+   "location": "query"
+  },
+  "quotaUser": {
+   "type": "string",
+   "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
+   "location": "query"
+  },
+  "userIp": {
+   "type": "string",
+   "description": "IP address of the site where the request originates. Use this if you want to enforce per-user limits.",
+   "location": "query"
+  }
+ },
+ "auth": {
+  "oauth2": {
+   "scopes": {
+    "https://www.googleapis.com/auth/userinfo.email": {
+     "description": "View your email address"
+    }
+   }
+  }
+ },
+ "schemas": {
+  "CollectionResponse_Site": {
+   "id": "CollectionResponse_Site",
+   "type": "object",
+   "properties": {
+    "items": {
+     "type": "array",
+     "items": {
+      "$ref": "Site"
+     }
+    },
+    "nextPageToken": {
+     "type": "string"
+    }
+   }
+  },
+  "DisplayLogoAs": {
+   "id": "DisplayLogoAs",
+   "type": "string",
+   "enum": [
+    "HTML",
+    "IMAGE",
+    "NONE"
+   ],
+   "enumDescriptions": [
+    "",
+    "",
+    ""
+   ]
+  },
+  "LookAndFeel": {
+   "id": "LookAndFeel",
+   "type": "string",
+   "enum": [
+    "GHOST",
+    "KONINKLIJKE",
+    "URL_IS_IT"
+   ],
+   "enumDescriptions": [
+    "",
+    "",
+    ""
+   ]
+  },
+  "Site": {
+   "id": "Site",
+   "type": "object",
+   "properties": {
+    "appleTouchIconUrl": {
+     "type": "string"
+    },
+    "applicationId": {
+     "type": "string"
+    },
+    "defaultPage": {
+     "type": "string"
+    },
+    "description": {
+     "type": "string"
+    },
+    "displayLogoAs": {
+     "$ref": "DisplayLogoAs"
+    },
+    "empty": {
+     "type": "boolean"
+    },
+    "encodedKey": {
+     "$ref": "_any"
+    },
+    "faviconUrl": {
+     "type": "string"
+    },
+    "googleAppEngineApplication": {
+     "type": "string"
+    },
+    "googleAppEngineVersion": {
+     "type": "string"
+    },
+    "googleWebFontsUrl": {
+     "type": "string"
+    },
+    "gwtRpcErrorMessage": {
+     "type": "string"
+    },
+    "logoHtml": {
+     "type": "string"
+    },
+    "logoImage": {
+     "type": "string"
+    },
+    "lookAndFeel": {
+     "$ref": "LookAndFeel"
+    },
+    "name": {
+     "type": "string"
+    },
+    "revision": {
+     "type": "string"
+    },
+    "revisionHistoryEnabled": {
+     "type": "string"
+    },
+    "siteFooter": {
+     "type": "string"
+    },
+    "siteName": {
+     "type": "string"
+    },
+    "style": {
+     "$ref": "Style"
+    },
+    "tag": {
+     "type": "string"
+    },
+    "theme": {
+     "type": "string"
+    }
+   }
+  },
+  "Style": {
+   "id": "Style",
+   "type": "object",
+   "properties": {
+    "description": {
+     "type": "string"
+    },
+    "encodedKey": {
+     "$ref": "_any"
+    },
+    "lookAndFeel": {
+     "type": "string"
+    },
+    "mainMenuFontFamily": {
+     "type": "string"
+    },
+    "mainMenuFontSize": {
+     "type": "string"
+    },
+    "mainMenuHoverFontColor": {
+     "type": "string"
+    },
+    "mainMenuSelectedFontColor": {
+     "type": "string"
+    },
+    "mainMenuSelectionFontColor": {
+     "type": "string"
+    },
+    "primaryAccentColor": {
+     "type": "string"
+    },
+    "primaryColor": {
+     "type": "string"
+    },
+    "revision": {
+     "type": "string"
+    },
+    "secondaryAccentColor": {
+     "type": "string"
+    },
+    "tertiaryAccentColor": {
+     "type": "string"
+    }
+   }
+  },
+  "_any": {
+   "id": "_any",
+   "type": "any"
+  }
+ },
+ "methods": {
+  "siteendpoint.getSite": {
+   "id": "siteendpoint.getSite",
+   "allowGet": true,
+   "parameters": {
+    "id": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "id"
+   ],
+   "returns": {
+    "$ref": "Site"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "siteendpoint.insertSite": {
+   "id": "siteendpoint.insertSite",
+   "parameters": {
+    "resource": {
+     "$ref": "Site"
+    }
+   },
+   "parameterOrder": [
+    "resource"
+   ],
+   "returns": {
+    "$ref": "Site"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "siteendpoint.listSite": {
+   "id": "siteendpoint.listSite",
+   "allowGet": true,
+   "parameters": {
+    "cursor": {
+     "type": "string"
+    },
+    "limit": {
+     "type": "integer",
+     "format": "int32"
+    }
+   },
+   "returns": {
+    "$ref": "CollectionResponse_Site"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "siteendpoint.removeSite": {
+   "id": "siteendpoint.removeSite",
+   "parameters": {
+    "id": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "id"
+   ],
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "siteendpoint.updateSite": {
+   "id": "siteendpoint.updateSite",
+   "parameters": {
+    "resource": {
+     "$ref": "Site"
+    }
+   },
+   "parameterOrder": [
+    "resource"
+   ],
+   "returns": {
+    "$ref": "Site"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  }
+ }
+}
