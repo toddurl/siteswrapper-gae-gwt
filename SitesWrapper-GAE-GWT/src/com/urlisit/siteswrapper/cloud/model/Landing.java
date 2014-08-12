@@ -20,6 +20,8 @@ import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
+
+import com.google.appengine.api.datastore.Key;
 import com.google.gwt.user.client.rpc.IsSerializable;
 
 /**
@@ -41,7 +43,7 @@ public class Landing implements IsSerializable {
   @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
   @Extension(vendorName="datanucleus", key="gae.encoded-pk", value="true")
   @SuppressWarnings("unused")
-  private String encodedKey;
+  private Key encodedKey;
   
   /**
    * One of either current, previous or a SimpleDateFormat. Used to mark a configuration object before
@@ -711,6 +713,10 @@ public class Landing implements IsSerializable {
    */
   public String getLastmod() {
     return this.lastmod;
+  }
+  
+  public Object getEncodedKey() {
+    return encodedKey;
   }
   
   /**

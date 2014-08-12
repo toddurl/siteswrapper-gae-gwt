@@ -59,7 +59,7 @@
   <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
   <init-param>
    <param-name>services</param-name>
-   <param-value>com.urlisit.siteswrapper.cloud.server.DeviceInfoEndpoint,com.urlisit.siteswrapper.cloud.server.ItemEndpoint,com.urlisit.siteswrapper.cloud.server.MessageEndpoint,com.urlisit.siteswrapper.cloud.server.PageEndpoint,com.urlisit.siteswrapper.cloud.server.SiteEndpoint,com.urlisit.siteswrapper.cloud.server.StyleEndpoint</param-value>
+   <param-value>com.urlisit.siteswrapper.cloud.server.DeviceInfoEndpoint,com.urlisit.siteswrapper.cloud.server.ItemEndpoint,com.urlisit.siteswrapper.cloud.server.LandingEndpoint,com.urlisit.siteswrapper.cloud.server.MessageEndpoint,com.urlisit.siteswrapper.cloud.server.PageEndpoint,com.urlisit.siteswrapper.cloud.server.SiteEndpoint,com.urlisit.siteswrapper.cloud.server.StyleEndpoint</param-value>
   </init-param>
  </servlet>
  <servlet-mapping>

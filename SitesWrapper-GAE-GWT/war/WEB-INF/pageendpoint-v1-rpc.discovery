@@ -1,6 +1,6 @@
 {
  "kind": "discovery#rpcDescription",
- "etag": "\"MKGA2miAJpVGF7yQTQhsoDXpye8/mCNTM1qfTnz6uAf9PHwxL9N0ohw\"",
+ "etag": "\"MKGA2miAJpVGF7yQTQhsoDXpye8/e60tf2feXkhLLaZTaAuwIA3BK0w\"",
  "discoveryVersion": "v1",
  "id": "pageendpoint:v1",
  "name": "pageendpoint",
@@ -178,7 +178,7 @@
     "displayLogoAs": {
      "$ref": "DisplayLogoAs"
     },
-    "key": {
+    "encodedKey": {
      "type": "string",
      "format": "int64"
     },

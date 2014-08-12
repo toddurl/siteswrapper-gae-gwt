@@ -26,6 +26,7 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 import javax.jdo.annotations.Extension;
 
+import com.google.appengine.api.datastore.Key;
 import com.google.gwt.i18n.client.Dictionary;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.IsSerializable;
@@ -619,7 +620,6 @@ public class Site implements IsSerializable {
    }
 
   public Object getEncodedKey() {
-    // TODO Auto-generated method stub
     return encodedKey;
   }
   

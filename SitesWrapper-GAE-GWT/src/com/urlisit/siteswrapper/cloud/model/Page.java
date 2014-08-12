@@ -25,11 +25,14 @@ import java.util.Map;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
+import com.google.appengine.api.datastore.Key;
 import com.google.gwt.user.client.rpc.IsSerializable;
 
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
@@ -52,7 +55,10 @@ public class Page implements IsSerializable {
    * Ensures each persisted object has a unique key in the datastore
    */
    @Id
-   private Long key;
+   //@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+   //private Long key;
+   @GeneratedValue(strategy=GenerationType.IDENTITY)
+   private Long encodedKey;
 
    /**
     * One of either current, previous or SimpleDateFormat. Used to mark a
@@ -333,9 +339,9 @@ public class Page implements IsSerializable {
     * Method getKey.
     * @return Key
     */
-   public long getKey() {
-      return key;
-   }
+   //public long getKey() {
+   //   return key;
+   //}
    
    /**
     * Method setRevision.
@@ -1137,6 +1143,10 @@ public class Page implements IsSerializable {
     */
    public String getLastmod() {
       return lastmod;
+   }
+   
+   public Object getEncodedKey() {
+     return encodedKey;
    }
 
 }

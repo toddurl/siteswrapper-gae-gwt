@@ -2,7 +2,7 @@
   "extends" : "thirdParty.api",
   "abstract" : false,
   "root" : "https://towingenterpriseexecutive.appspot.com/_ah/api",
-  "name" : "itemendpoint",
+  "name" : "landingendpoint",
   "version" : "v1",
   "defaultVersion" : false,
   "adapter" : {
@@ -27,14 +27,88 @@
   "ownerName" : "urlisit.com",
   "packagePath" : "siteswrapper.cloud.model",
   "methods" : {
-    "itemendpoint.listItem" : {
-      "path" : "item",
+    "landingendpoint.removeLanding" : {
+      "path" : "landing/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.LandingEndpoint.removeLanding",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "landingendpoint.insertLanding" : {
+      "path" : "landing",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.LandingEndpoint.insertLanding",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "landingendpoint.updateLanding" : {
+      "path" : "landing",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.LandingEndpoint.updateLanding",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "landingendpoint.getLanding" : {
+      "path" : "landing/{id}",
       "httpMethod" : "GET",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.ItemEndpoint.listItem",
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.LandingEndpoint.getLanding",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "landingendpoint.listLanding" : {
+      "path" : "landing",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.LandingEndpoint.listLanding",
       "request" : {
         "parameters" : {
           "cursor" : {
@@ -51,106 +125,16 @@
       "response" : {
         "body" : "autoTemplate(backendResponse)"
       }
-    },
-    "itemendpoint.getItem" : {
-      "path" : "item/{id}",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.ItemEndpoint.getItem",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "itemendpoint.updateItem" : {
-      "path" : "item",
-      "httpMethod" : "PUT",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.ItemEndpoint.updateItem",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "itemendpoint.insertItem" : {
-      "path" : "item",
-      "httpMethod" : "POST",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.ItemEndpoint.insertItem",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "itemendpoint.removeItem" : {
-      "path" : "item/{id}",
-      "httpMethod" : "DELETE",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.ItemEndpoint.removeItem",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "empty"
-      }
     }
   },
   "descriptor" : {
     "schemas" : {
-      "CollectionResponse_Item" : {
-        "id" : "CollectionResponse_Item",
-        "type" : "object",
-        "properties" : {
-          "items" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "Item"
-            }
-          },
-          "nextPageToken" : {
-            "type" : "string"
-          }
-        }
-      },
-      "Item" : {
-        "id" : "Item",
+      "Landing" : {
+        "id" : "Landing",
         "type" : "object",
         "properties" : {
           "encodedKey" : {
-            "type" : "string",
-            "format" : "int64"
+            "$ref" : "_any"
           },
           "revision" : {
             "type" : "string"
@@ -237,36 +221,55 @@
             "type" : "string"
           }
         }
+      },
+      "_any" : {
+        "id" : "_any",
+        "type" : "any"
+      },
+      "CollectionResponse_Landing" : {
+        "id" : "CollectionResponse_Landing",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Landing"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
       }
     },
     "methods" : {
-      "com.urlisit.siteswrapper.cloud.server.ItemEndpoint.listItem" : {
-        "response" : {
-          "$ref" : "CollectionResponse_Item"
-        }
+      "com.urlisit.siteswrapper.cloud.server.LandingEndpoint.removeLanding" : {
       },
-      "com.urlisit.siteswrapper.cloud.server.ItemEndpoint.getItem" : {
-        "response" : {
-          "$ref" : "Item"
-        }
-      },
-      "com.urlisit.siteswrapper.cloud.server.ItemEndpoint.updateItem" : {
+      "com.urlisit.siteswrapper.cloud.server.LandingEndpoint.insertLanding" : {
         "request" : {
-          "$ref" : "Item"
+          "$ref" : "Landing"
         },
         "response" : {
-          "$ref" : "Item"
+          "$ref" : "Landing"
         }
       },
-      "com.urlisit.siteswrapper.cloud.server.ItemEndpoint.insertItem" : {
+      "com.urlisit.siteswrapper.cloud.server.LandingEndpoint.updateLanding" : {
         "request" : {
-          "$ref" : "Item"
+          "$ref" : "Landing"
         },
         "response" : {
-          "$ref" : "Item"
+          "$ref" : "Landing"
         }
       },
-      "com.urlisit.siteswrapper.cloud.server.ItemEndpoint.removeItem" : {
+      "com.urlisit.siteswrapper.cloud.server.LandingEndpoint.getLanding" : {
+        "response" : {
+          "$ref" : "Landing"
+        }
+      },
+      "com.urlisit.siteswrapper.cloud.server.LandingEndpoint.listLanding" : {
+        "response" : {
+          "$ref" : "CollectionResponse_Landing"
+        }
       }
     }
   }

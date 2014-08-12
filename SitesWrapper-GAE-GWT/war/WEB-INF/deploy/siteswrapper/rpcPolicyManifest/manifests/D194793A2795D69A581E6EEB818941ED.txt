@@ -1,0 +1,2 @@
+serviceClass: com.urlisit.siteswrapper.cloud.client.Rpc
+path: F9C6B1AB1053AAEFF6A20B31B48C1F24.gwt.rpc

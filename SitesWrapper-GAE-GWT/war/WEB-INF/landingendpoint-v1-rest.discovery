@@ -1,9 +1,9 @@
 {
- "kind": "discovery#rpcDescription",
- "etag": "\"MKGA2miAJpVGF7yQTQhsoDXpye8/4MViMbnjMtQ5rCUSvGVR2loTlKU\"",
+ "kind": "discovery#restDescription",
+ "etag": "\"MKGA2miAJpVGF7yQTQhsoDXpye8/zxGhr-TkBhyV2mQQrIdrx5LODqQ\"",
  "discoveryVersion": "v1",
- "id": "itemendpoint:v1",
- "name": "itemendpoint",
+ "id": "landingendpoint:v1",
+ "name": "landingendpoint",
  "version": "v1",
  "description": "This is an API",
  "ownerDomain": "urlisit.com",
@@ -13,10 +13,12 @@
   "x16": "http://www.google.com/images/icons/product/search-16.gif",
   "x32": "http://www.google.com/images/icons/product/search-32.gif"
  },
- "protocol": "rpc",
+ "protocol": "rest",
+ "baseUrl": "https://towingenterpriseexecutive.appspot.com/_ah/api/landingendpoint/v1/",
+ "basePath": "/_ah/api/landingendpoint/v1/",
  "rootUrl": "https://towingenterpriseexecutive.appspot.com/_ah/api/",
- "rpcUrl": "https://towingenterpriseexecutive.appspot.com/_ah/api/rpc",
- "rpcPath": "/_ah/api/rpc",
+ "servicePath": "landingendpoint/v1/",
+ "batchPath": "batch",
  "parameters": {
   "alt": {
    "type": "string",
@@ -72,14 +74,14 @@
   }
  },
  "schemas": {
-  "CollectionResponse_Item": {
-   "id": "CollectionResponse_Item",
+  "CollectionResponse_Landing": {
+   "id": "CollectionResponse_Landing",
    "type": "object",
    "properties": {
     "items": {
      "type": "array",
      "items": {
-      "$ref": "Item"
+      "$ref": "Landing"
      }
     },
     "nextPageToken": {
@@ -87,16 +89,15 @@
     }
    }
   },
-  "Item": {
-   "id": "Item",
+  "Landing": {
+   "id": "Landing",
    "type": "object",
    "properties": {
     "description": {
      "type": "string"
     },
     "encodedKey": {
-     "type": "string",
-     "format": "int64"
+     "$ref": "_any"
     },
     "imageUrl": {
      "type": "string"
@@ -180,72 +181,82 @@
      "type": "string"
     }
    }
+  },
+  "_any": {
+   "id": "_any",
+   "type": "any"
   }
  },
  "methods": {
-  "itemendpoint.getItem": {
-   "id": "itemendpoint.getItem",
-   "allowGet": true,
+  "getLanding": {
+   "id": "landingendpoint.getLanding",
+   "path": "landing/{id}",
+   "httpMethod": "GET",
    "parameters": {
     "id": {
      "type": "string",
      "required": true,
-     "format": "int64"
+     "format": "int64",
+     "location": "path"
     }
    },
    "parameterOrder": [
     "id"
    ],
-   "returns": {
-    "$ref": "Item"
+   "response": {
+    "$ref": "Landing"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"
    ]
   },
-  "itemendpoint.insertItem": {
-   "id": "itemendpoint.insertItem",
-   "parameters": {
-    "resource": {
-     "$ref": "Item"
-    }
+  "insertLanding": {
+   "id": "landingendpoint.insertLanding",
+   "path": "landing",
+   "httpMethod": "POST",
+   "request": {
+    "$ref": "Landing",
+    "parameterName": "resource"
    },
-   "parameterOrder": [
-    "resource"
-   ],
-   "returns": {
-    "$ref": "Item"
+   "response": {
+    "$ref": "Landing"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"
    ]
   },
-  "itemendpoint.listItem": {
-   "id": "itemendpoint.listItem",
-   "allowGet": true,
+  "listLanding": {
+   "id": "landingendpoint.listLanding",
+   "path": "landing",
+   "httpMethod": "GET",
    "parameters": {
     "cursor": {
-     "type": "string"
+     "type": "string",
+     "location": "query"
     },
     "limit": {
      "type": "integer",
-     "format": "int32"
+     "format": "int32",
+     "location": "query"
     }
    },
-   "returns": {
-    "$ref": "CollectionResponse_Item"
+   "response": {
+    "$ref": "CollectionResponse_Landing"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"
    ]
   },
-  "itemendpoint.removeItem": {
-   "id": "itemendpoint.removeItem",
+  "removeLanding": {
+   "id": "landingendpoint.removeLanding",
+   "path": "landing/{id}",
+   "httpMethod": "DELETE",
    "parameters": {
     "id": {
      "type": "string",
      "required": true,
-     "format": "int64"
+     "format": "int64",
+     "location": "path"
     }
    },
    "parameterOrder": [
@@ -255,18 +266,16 @@
     "https://www.googleapis.com/auth/userinfo.email"
    ]
   },
-  "itemendpoint.updateItem": {
-   "id": "itemendpoint.updateItem",
-   "parameters": {
-    "resource": {
-     "$ref": "Item"
-    }
+  "updateLanding": {
+   "id": "landingendpoint.updateLanding",
+   "path": "landing",
+   "httpMethod": "PUT",
+   "request": {
+    "$ref": "Landing",
+    "parameterName": "resource"
    },
-   "parameterOrder": [
-    "resource"
-   ],
-   "returns": {
-    "$ref": "Item"
+   "response": {
+    "$ref": "Landing"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"

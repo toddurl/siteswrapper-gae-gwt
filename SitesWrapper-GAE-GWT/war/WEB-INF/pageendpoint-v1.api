@@ -133,9 +133,8 @@
         "id" : "Page",
         "type" : "object",
         "properties" : {
-          "key" : {
-            "type" : "string",
-            "format" : "int64"
+          "encodedKey" : {
+            "$ref" : "_any"
           },
           "revision" : {
             "type" : "string"
@@ -267,6 +266,10 @@
             "$ref" : "JsonMap"
           }
         }
+      },
+      "_any" : {
+        "id" : "_any",
+        "type" : "any"
       },
       "DisplayLogoAs" : {
         "id" : "DisplayLogoAs",
