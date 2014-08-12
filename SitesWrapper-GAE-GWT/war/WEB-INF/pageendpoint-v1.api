@@ -1,0 +1,327 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://towingenterpriseexecutive.appspot.com/_ah/api",
+  "name" : "pageendpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://towingenterpriseexecutive.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "urlisit.com",
+  "ownerName" : "urlisit.com",
+  "packagePath" : "siteswrapper.cloud.model",
+  "methods" : {
+    "pageendpoint.updatePage" : {
+      "path" : "page",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.PageEndpoint.updatePage",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "pageendpoint.insertPage" : {
+      "path" : "page",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.PageEndpoint.insertPage",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "pageendpoint.removePage" : {
+      "path" : "page/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.PageEndpoint.removePage",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "pageendpoint.getPage" : {
+      "path" : "page/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.PageEndpoint.getPage",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "pageendpoint.listPage" : {
+      "path" : "page",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.PageEndpoint.listPage",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "Page" : {
+        "id" : "Page",
+        "type" : "object",
+        "properties" : {
+          "key" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "revision" : {
+            "type" : "string"
+          },
+          "pageName" : {
+            "type" : "string"
+          },
+          "showPageTitle" : {
+            "type" : "boolean"
+          },
+          "logoImage" : {
+            "type" : "string"
+          },
+          "logoHtml" : {
+            "type" : "string"
+          },
+          "displayLogoAs" : {
+            "$ref" : "DisplayLogoAs"
+          },
+          "languageTranslationEnabled" : {
+            "type" : "boolean"
+          },
+          "translatedLanguages" : {
+            "type" : "string"
+          },
+          "customSearchEnabled" : {
+            "type" : "boolean"
+          },
+          "customSearchUrls" : {
+            "type" : "string"
+          },
+          "mainMenuType" : {
+            "type" : "string"
+          },
+          "mainMenuDirection" : {
+            "type" : "string"
+          },
+          "mainMenuSelectionHtml" : {
+            "type" : "string"
+          },
+          "mainMenuSelectedHtml" : {
+            "type" : "string"
+          },
+          "backgroundImageUrls" : {
+            "type" : "string"
+          },
+          "backgroundImageDurationSeconds" : {
+            "type" : "string"
+          },
+          "contentMenuItemName" : {
+            "type" : "string"
+          },
+          "contentMenuItemLink" : {
+            "type" : "string"
+          },
+          "contentMenuStyleSheet" : {
+            "type" : "string"
+          },
+          "contentLayout" : {
+            "type" : "string"
+          },
+          "contentHeader" : {
+            "type" : "string"
+          },
+          "contentColumnOne" : {
+            "type" : "string"
+          },
+          "contentColumnTwo" : {
+            "type" : "string"
+          },
+          "contentColumnThree" : {
+            "type" : "string"
+          },
+          "contentLeftSidebar" : {
+            "type" : "string"
+          },
+          "contentRightSidebar" : {
+            "type" : "string"
+          },
+          "contentFooter" : {
+            "type" : "string"
+          },
+          "messageHeaderText" : {
+            "type" : "string"
+          },
+          "messageBodyText" : {
+            "type" : "string"
+          },
+          "messageInformationItem" : {
+            "type" : "string"
+          },
+          "messageHtmlColorCode" : {
+            "type" : "string"
+          },
+          "messageWidthPercentOfPage" : {
+            "type" : "string"
+          },
+          "messagePercentOfPageFromLeft" : {
+            "type" : "string"
+          },
+          "messagePercentOfPageFromTop" : {
+            "type" : "string"
+          },
+          "messageDurationSeconds" : {
+            "type" : "string"
+          },
+          "lastmod" : {
+            "type" : "string"
+          },
+          "backgroundImages" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "contentMenuItemNames" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "contentMenuItemLinks" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "contentMenu" : {
+            "$ref" : "JsonMap"
+          }
+        }
+      },
+      "DisplayLogoAs" : {
+        "id" : "DisplayLogoAs",
+        "type" : "string",
+        "enum" : [ "IMAGE", "HTML", "NONE" ]
+      },
+      "JsonMap" : {
+        "id" : "JsonMap",
+        "type" : "object"
+      },
+      "CollectionResponse_Page" : {
+        "id" : "CollectionResponse_Page",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Page"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.urlisit.siteswrapper.cloud.server.PageEndpoint.updatePage" : {
+        "request" : {
+          "$ref" : "Page"
+        },
+        "response" : {
+          "$ref" : "Page"
+        }
+      },
+      "com.urlisit.siteswrapper.cloud.server.PageEndpoint.insertPage" : {
+        "request" : {
+          "$ref" : "Page"
+        },
+        "response" : {
+          "$ref" : "Page"
+        }
+      },
+      "com.urlisit.siteswrapper.cloud.server.PageEndpoint.removePage" : {
+      },
+      "com.urlisit.siteswrapper.cloud.server.PageEndpoint.getPage" : {
+        "response" : {
+          "$ref" : "Page"
+        }
+      },
+      "com.urlisit.siteswrapper.cloud.server.PageEndpoint.listPage" : {
+        "response" : {
+          "$ref" : "CollectionResponse_Page"
+        }
+      }
+    }
+  }
+}

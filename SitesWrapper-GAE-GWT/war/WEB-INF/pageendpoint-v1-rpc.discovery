@@ -1,0 +1,339 @@
+{
+ "kind": "discovery#rpcDescription",
+ "etag": "\"MKGA2miAJpVGF7yQTQhsoDXpye8/mCNTM1qfTnz6uAf9PHwxL9N0ohw\"",
+ "discoveryVersion": "v1",
+ "id": "pageendpoint:v1",
+ "name": "pageendpoint",
+ "version": "v1",
+ "description": "This is an API",
+ "ownerDomain": "urlisit.com",
+ "ownerName": "urlisit.com",
+ "packagePath": "siteswrapper.cloud.model",
+ "icons": {
+  "x16": "http://www.google.com/images/icons/product/search-16.gif",
+  "x32": "http://www.google.com/images/icons/product/search-32.gif"
+ },
+ "protocol": "rpc",
+ "rootUrl": "https://towingenterpriseexecutive.appspot.com/_ah/api/",
+ "rpcUrl": "https://towingenterpriseexecutive.appspot.com/_ah/api/rpc",
+ "rpcPath": "/_ah/api/rpc",
+ "parameters": {
+  "alt": {
+   "type": "string",
+   "description": "Data format for the response.",
+   "default": "json",
+   "enum": [
+    "json"
+   ],
+   "enumDescriptions": [
+    "Responses with Content-Type of application/json"
+   ],
+   "location": "query"
+  },
+  "fields": {
+   "type": "string",
+   "description": "Selector specifying which fields to include in a partial response.",
+   "location": "query"
+  },
+  "key": {
+   "type": "string",
+   "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+   "location": "query"
+  },
+  "oauth_token": {
+   "type": "string",
+   "description": "OAuth 2.0 token for the current user.",
+   "location": "query"
+  },
+  "prettyPrint": {
+   "type": "boolean",
+   "description": "Returns response with indentations and line breaks.",
+   "default": "true",
+   "location": "query"
+  },
+  "quotaUser": {
+   "type": "string",
+   "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
+   "location": "query"
+  },
+  "userIp": {
+   "type": "string",
+   "description": "IP address of the site where the request originates. Use this if you want to enforce per-user limits.",
+   "location": "query"
+  }
+ },
+ "auth": {
+  "oauth2": {
+   "scopes": {
+    "https://www.googleapis.com/auth/userinfo.email": {
+     "description": "View your email address"
+    }
+   }
+  }
+ },
+ "schemas": {
+  "CollectionResponse_Page": {
+   "id": "CollectionResponse_Page",
+   "type": "object",
+   "properties": {
+    "items": {
+     "type": "array",
+     "items": {
+      "$ref": "Page"
+     }
+    },
+    "nextPageToken": {
+     "type": "string"
+    }
+   }
+  },
+  "DisplayLogoAs": {
+   "id": "DisplayLogoAs",
+   "type": "string",
+   "enum": [
+    "HTML",
+    "IMAGE",
+    "NONE"
+   ],
+   "enumDescriptions": [
+    "",
+    "",
+    ""
+   ]
+  },
+  "JsonMap": {
+   "id": "JsonMap",
+   "type": "object"
+  },
+  "Page": {
+   "id": "Page",
+   "type": "object",
+   "properties": {
+    "backgroundImageDurationSeconds": {
+     "type": "string"
+    },
+    "backgroundImageUrls": {
+     "type": "string"
+    },
+    "backgroundImages": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "contentColumnOne": {
+     "type": "string"
+    },
+    "contentColumnThree": {
+     "type": "string"
+    },
+    "contentColumnTwo": {
+     "type": "string"
+    },
+    "contentFooter": {
+     "type": "string"
+    },
+    "contentHeader": {
+     "type": "string"
+    },
+    "contentLayout": {
+     "type": "string"
+    },
+    "contentLeftSidebar": {
+     "type": "string"
+    },
+    "contentMenu": {
+     "$ref": "JsonMap"
+    },
+    "contentMenuItemLink": {
+     "type": "string"
+    },
+    "contentMenuItemLinks": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "contentMenuItemName": {
+     "type": "string"
+    },
+    "contentMenuItemNames": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "contentMenuStyleSheet": {
+     "type": "string"
+    },
+    "contentRightSidebar": {
+     "type": "string"
+    },
+    "customSearchEnabled": {
+     "type": "boolean"
+    },
+    "customSearchUrls": {
+     "type": "string"
+    },
+    "displayLogoAs": {
+     "$ref": "DisplayLogoAs"
+    },
+    "key": {
+     "type": "string",
+     "format": "int64"
+    },
+    "languageTranslationEnabled": {
+     "type": "boolean"
+    },
+    "lastmod": {
+     "type": "string"
+    },
+    "logoHtml": {
+     "type": "string"
+    },
+    "logoImage": {
+     "type": "string"
+    },
+    "mainMenuDirection": {
+     "type": "string"
+    },
+    "mainMenuSelectedHtml": {
+     "type": "string"
+    },
+    "mainMenuSelectionHtml": {
+     "type": "string"
+    },
+    "mainMenuType": {
+     "type": "string"
+    },
+    "messageBodyText": {
+     "type": "string"
+    },
+    "messageDurationSeconds": {
+     "type": "string"
+    },
+    "messageHeaderText": {
+     "type": "string"
+    },
+    "messageHtmlColorCode": {
+     "type": "string"
+    },
+    "messageInformationItem": {
+     "type": "string"
+    },
+    "messagePercentOfPageFromLeft": {
+     "type": "string"
+    },
+    "messagePercentOfPageFromTop": {
+     "type": "string"
+    },
+    "messageWidthPercentOfPage": {
+     "type": "string"
+    },
+    "pageName": {
+     "type": "string"
+    },
+    "revision": {
+     "type": "string"
+    },
+    "showPageTitle": {
+     "type": "boolean"
+    },
+    "translatedLanguages": {
+     "type": "string"
+    }
+   }
+  }
+ },
+ "methods": {
+  "pageendpoint.getPage": {
+   "id": "pageendpoint.getPage",
+   "allowGet": true,
+   "parameters": {
+    "id": {
+     "type": "string",
+     "required": true,
+     "format": "int64"
+    }
+   },
+   "parameterOrder": [
+    "id"
+   ],
+   "returns": {
+    "$ref": "Page"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "pageendpoint.insertPage": {
+   "id": "pageendpoint.insertPage",
+   "parameters": {
+    "resource": {
+     "$ref": "Page"
+    }
+   },
+   "parameterOrder": [
+    "resource"
+   ],
+   "returns": {
+    "$ref": "Page"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "pageendpoint.listPage": {
+   "id": "pageendpoint.listPage",
+   "allowGet": true,
+   "parameters": {
+    "cursor": {
+     "type": "string"
+    },
+    "limit": {
+     "type": "integer",
+     "format": "int32"
+    }
+   },
+   "returns": {
+    "$ref": "CollectionResponse_Page"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "pageendpoint.removePage": {
+   "id": "pageendpoint.removePage",
+   "parameters": {
+    "id": {
+     "type": "string",
+     "required": true,
+     "format": "int64"
+    }
+   },
+   "parameterOrder": [
+    "id"
+   ],
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "pageendpoint.updatePage": {
+   "id": "pageendpoint.updatePage",
+   "parameters": {
+    "resource": {
+     "$ref": "Page"
+    }
+   },
+   "parameterOrder": [
+    "resource"
+   ],
+   "returns": {
+    "$ref": "Page"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  }
+ }
+}

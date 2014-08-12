@@ -1,0 +1,13 @@
+@external .locLangSelector;
+.locLangSelector {
+	width: 18%;
+}
+@external .searchField;
+.searchField {
+	height: 10px;
+}
+@external .searchButton;
+.searchButton {
+	background: url(/images/greenSearchButton.png);
+	display: block;
+}

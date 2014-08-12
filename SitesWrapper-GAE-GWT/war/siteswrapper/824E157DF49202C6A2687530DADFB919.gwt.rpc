@@ -1,0 +1,30 @@
+com.google.gwt.user.client.rpc.IncompatibleRemoteServiceException, true, true, true, true, com.google.gwt.user.client.rpc.IncompatibleRemoteServiceException/3936916533, 3936916533
+com.google.gwt.user.client.rpc.RpcTokenException, true, true, false, false, com.google.gwt.user.client.rpc.RpcTokenException/2345075298, 2345075298
+com.google.gwt.user.client.rpc.XsrfToken, false, false, true, true, com.google.gwt.user.client.rpc.XsrfToken/4254043109, 4254043109
+com.urlisit.siteswrapper.cloud.client.Rpc, false, false, false, false, _, 3962885192
+com.urlisit.siteswrapper.cloud.model.DTO, true, true, false, false, com.urlisit.siteswrapper.cloud.model.DTO/2824240422, 2824240422
+com.urlisit.siteswrapper.cloud.model.DisplayLogoAs, true, true, false, false, com.urlisit.siteswrapper.cloud.model.DisplayLogoAs/1226616618, 1226616618
+com.urlisit.siteswrapper.cloud.model.Item, true, true, false, false, com.urlisit.siteswrapper.cloud.model.Item/611395664, 611395664
+com.urlisit.siteswrapper.cloud.model.LookAndFeel, true, true, false, false, com.urlisit.siteswrapper.cloud.model.LookAndFeel/2454327462, 2454327462
+com.urlisit.siteswrapper.cloud.model.Page, true, true, false, false, com.urlisit.siteswrapper.cloud.model.Page/3411920014, 3411920014
+@ClientFields,com.urlisit.siteswrapper.cloud.model.Page,key,revision,pageName,showPageTitle,logoImage,logoHtml,displayLogoAs,languageTranslationEnabled,translatedLanguages,customSearchEnabled,customSearchUrls,mainMenuType,mainMenuDirection,mainMenuSelectionHtml,mainMenuSelectedHtml,backgroundImageUrls,backgroundImageDurationSeconds,contentMenuItemName,contentMenuItemLink,contentMenuItemCache,contentMenuStyleSheet,contentLayout,contentHeader,contentColumnOne,contentColumnTwo,contentColumnThree,contentLeftSidebar,contentRightSidebar,contentFooter,messageHeaderText,messageBodyText,messageInformationItem,messageHtmlColorCode,messageWidthPercentOfPage,messagePercentOfPageFromLeft,messagePercentOfPageFromTop,messageDurationSeconds,lastmod
+[Lcom.urlisit.siteswrapper.cloud.model.Page;, true, true, false, false, [Lcom.urlisit.siteswrapper.cloud.model.Page;/3325787443, 3325787443
+com.urlisit.siteswrapper.cloud.model.Site, true, true, false, false, com.urlisit.siteswrapper.cloud.model.Site/2827541389, 2827541389
+@ClientFields,com.urlisit.siteswrapper.cloud.model.Site,encodedKey,revision,tag,name,description,applicationId,googleAppEngineApplication,googleAppEngineVersion,siteName,lookAndFeel,style,theme,googleWebFontsUrl,faviconUrl,appleTouchIconUrl,defaultPage,logoImage,logoHtml,displayLogoAs,siteFooter,gwtRpcErrorMessage,revisionHistoryEnabled,empty
+com.urlisit.siteswrapper.cloud.model.Style, true, true, false, false, com.urlisit.siteswrapper.cloud.model.Style/998660321, 998660321
+@ClientFields,com.urlisit.siteswrapper.cloud.model.Style,encodedKey,revision,lookAndFeel,description,primaryColor,primaryAccentColor,secondaryAccentColor,tertiaryAccentColor,mainMenuFontFamily,mainMenuFontSize,mainMenuSelectionFontColor,mainMenuHoverFontColor,mainMenuSelectedFontColor
+java.lang.Boolean, true, true, false, false, java.lang.Boolean/476441737, 476441737
+java.lang.Exception, true, false, true, false, java.lang.Exception/1920171873, 1920171873
+java.lang.Long, true, true, false, false, java.lang.Long/4227064769, 4227064769
+java.lang.Number, true, false, false, false, java.lang.Number/300033342, 300033342
+java.lang.RuntimeException, true, false, true, false, java.lang.RuntimeException/515124647, 515124647
+java.lang.String, true, true, true, true, java.lang.String/2004016611, 2004016611
+[Ljava.lang.String;, true, true, false, false, [Ljava.lang.String;/2600011424, 2600011424
+java.lang.Throwable, true, false, true, false, java.lang.Throwable/2953622131, 2953622131
+java.util.ArrayList, true, true, false, false, java.util.ArrayList/4159755760, 4159755760
+java.util.Arrays$ArrayList, true, true, false, false, java.util.Arrays$ArrayList/2507071751, 2507071751
+java.util.Collections$EmptyList, true, true, false, false, java.util.Collections$EmptyList/4157118744, 4157118744
+java.util.Collections$SingletonList, true, true, false, false, java.util.Collections$SingletonList/1586180994, 1586180994
+java.util.LinkedList, true, true, false, false, java.util.LinkedList/3953877921, 3953877921
+java.util.Stack, true, true, false, false, java.util.Stack/1346942793, 1346942793
+java.util.Vector, true, true, false, false, java.util.Vector/3057315478, 3057315478

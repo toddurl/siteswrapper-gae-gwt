@@ -1,0 +1,313 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://towingenterpriseexecutive.appspot.com/_ah/api",
+  "name" : "siteendpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://towingenterpriseexecutive.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "urlisit.com",
+  "ownerName" : "urlisit.com",
+  "packagePath" : "siteswrapper.cloud.model",
+  "methods" : {
+    "siteendpoint.updateSite" : {
+      "path" : "site",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.SiteEndpoint.updateSite",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "siteendpoint.listSite" : {
+      "path" : "site",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.SiteEndpoint.listSite",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "siteendpoint.insertSite" : {
+      "path" : "site",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.SiteEndpoint.insertSite",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "siteendpoint.removeSite" : {
+      "path" : "site/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.SiteEndpoint.removeSite",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "siteendpoint.getSite" : {
+      "path" : "site/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.SiteEndpoint.getSite",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "Site" : {
+        "id" : "Site",
+        "type" : "object",
+        "properties" : {
+          "encodedKey" : {
+            "$ref" : "_any"
+          },
+          "revision" : {
+            "type" : "string"
+          },
+          "tag" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "description" : {
+            "type" : "string"
+          },
+          "applicationId" : {
+            "type" : "string"
+          },
+          "googleAppEngineApplication" : {
+            "type" : "string"
+          },
+          "googleAppEngineVersion" : {
+            "type" : "string"
+          },
+          "siteName" : {
+            "type" : "string"
+          },
+          "lookAndFeel" : {
+            "$ref" : "LookAndFeel"
+          },
+          "style" : {
+            "$ref" : "Style"
+          },
+          "theme" : {
+            "type" : "string"
+          },
+          "googleWebFontsUrl" : {
+            "type" : "string"
+          },
+          "faviconUrl" : {
+            "type" : "string"
+          },
+          "appleTouchIconUrl" : {
+            "type" : "string"
+          },
+          "defaultPage" : {
+            "type" : "string"
+          },
+          "logoImage" : {
+            "type" : "string"
+          },
+          "logoHtml" : {
+            "type" : "string"
+          },
+          "displayLogoAs" : {
+            "$ref" : "DisplayLogoAs"
+          },
+          "siteFooter" : {
+            "type" : "string"
+          },
+          "gwtRpcErrorMessage" : {
+            "type" : "string"
+          },
+          "revisionHistoryEnabled" : {
+            "type" : "string"
+          },
+          "empty" : {
+            "type" : "boolean"
+          }
+        }
+      },
+      "_any" : {
+        "id" : "_any",
+        "type" : "any"
+      },
+      "LookAndFeel" : {
+        "id" : "LookAndFeel",
+        "type" : "string",
+        "enum" : [ "KONINKLIJKE", "GHOST", "URL_IS_IT" ]
+      },
+      "Style" : {
+        "id" : "Style",
+        "type" : "object",
+        "properties" : {
+          "encodedKey" : {
+            "$ref" : "_any"
+          },
+          "revision" : {
+            "type" : "string"
+          },
+          "lookAndFeel" : {
+            "type" : "string"
+          },
+          "description" : {
+            "type" : "string"
+          },
+          "primaryColor" : {
+            "type" : "string"
+          },
+          "primaryAccentColor" : {
+            "type" : "string"
+          },
+          "secondaryAccentColor" : {
+            "type" : "string"
+          },
+          "tertiaryAccentColor" : {
+            "type" : "string"
+          },
+          "mainMenuFontFamily" : {
+            "type" : "string"
+          },
+          "mainMenuFontSize" : {
+            "type" : "string"
+          },
+          "mainMenuSelectionFontColor" : {
+            "type" : "string"
+          },
+          "mainMenuHoverFontColor" : {
+            "type" : "string"
+          },
+          "mainMenuSelectedFontColor" : {
+            "type" : "string"
+          }
+        }
+      },
+      "DisplayLogoAs" : {
+        "id" : "DisplayLogoAs",
+        "type" : "string",
+        "enum" : [ "IMAGE", "HTML", "NONE" ]
+      },
+      "CollectionResponse_Site" : {
+        "id" : "CollectionResponse_Site",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Site"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.urlisit.siteswrapper.cloud.server.SiteEndpoint.updateSite" : {
+        "request" : {
+          "$ref" : "Site"
+        },
+        "response" : {
+          "$ref" : "Site"
+        }
+      },
+      "com.urlisit.siteswrapper.cloud.server.SiteEndpoint.listSite" : {
+        "response" : {
+          "$ref" : "CollectionResponse_Site"
+        }
+      },
+      "com.urlisit.siteswrapper.cloud.server.SiteEndpoint.insertSite" : {
+        "request" : {
+          "$ref" : "Site"
+        },
+        "response" : {
+          "$ref" : "Site"
+        }
+      },
+      "com.urlisit.siteswrapper.cloud.server.SiteEndpoint.removeSite" : {
+      },
+      "com.urlisit.siteswrapper.cloud.server.SiteEndpoint.getSite" : {
+        "response" : {
+          "$ref" : "Site"
+        }
+      }
+    }
+  }
+}
