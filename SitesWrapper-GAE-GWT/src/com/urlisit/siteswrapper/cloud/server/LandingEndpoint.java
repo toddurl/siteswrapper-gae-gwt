@@ -1,6 +1,6 @@
 package com.urlisit.siteswrapper.cloud.server;
 
-import com.urlisit.siteswrapper.cloud.model.Site;
+import com.urlisit.siteswrapper.cloud.model.Landing;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
@@ -18,8 +18,8 @@ import javax.persistence.EntityNotFoundException;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-@Api(name = "siteendpoint", namespace = @ApiNamespace(ownerDomain = "urlisit.com", ownerName = "urlisit.com", packagePath = "siteswrapper.cloud.model"))
-public class SiteEndpoint {
+@Api(name = "landingendpoint", namespace = @ApiNamespace(ownerDomain = "urlisit.com", ownerName = "urlisit.com", packagePath = "siteswrapper.cloud.model"))
+public class LandingEndpoint {
 
   /**
    * This method lists all the entities inserted in datastore.
@@ -29,16 +29,16 @@ public class SiteEndpoint {
    * persisted and a cursor to the next page.
    */
   @SuppressWarnings({ "unchecked", "unused" })
-  @ApiMethod(name = "listSite")
-  public CollectionResponse<Site> listSite(@Nullable @Named("cursor") String cursorString, @Nullable @Named("limit") Integer limit) {
+  @ApiMethod(name = "listLanding")
+  public CollectionResponse<Landing> listLanding(@Nullable @Named("cursor") String cursorString, @Nullable @Named("limit") Integer limit) {
 
     PersistenceManager mgr = null;
     Cursor cursor = null;
-    List<Site> execute = null;
+    List<Landing> execute = null;
 
     try {
       mgr = getPersistenceManager();
-      Query query = mgr.newQuery(Site.class);
+      Query query = mgr.newQuery(Landing.class);
       if (cursorString != null && cursorString != "") {
         cursor = Cursor.fromWebSafeString(cursorString);
         HashMap<String, Object> extensionMap = new HashMap<String, Object>();
@@ -50,20 +50,20 @@ public class SiteEndpoint {
         query.setRange(0, limit);
       }
 
-      execute = (List<Site>) query.execute();
+      execute = (List<Landing>) query.execute();
       cursor = JDOCursorHelper.getCursor(execute);
       if (cursor != null)
         cursorString = cursor.toWebSafeString();
 
       // Tight loop for fetching all entities from datastore and accomodate
       // for lazy fetch.
-      for (Site obj : execute)
+      for (Landing obj : execute)
         ;
     } finally {
       mgr.close();
     }
 
-    return CollectionResponse.<Site> builder().setItems(execute).setNextPageToken(cursorString).build();
+    return CollectionResponse.<Landing> builder().setItems(execute).setNextPageToken(cursorString).build();
   }
 
   /**
@@ -72,16 +72,16 @@ public class SiteEndpoint {
    * @param id the primary key of the java bean.
    * @return The entity with primary key id.
    */
-  @ApiMethod(name = "getSite")
-  public Site getSite(@Named("id") Long id) {
+  @ApiMethod(name = "getLanding")
+  public Landing getLanding(@Named("id") Long id) {
     PersistenceManager mgr = getPersistenceManager();
-    Site site = null;
+    Landing landing = null;
     try {
-      site = mgr.getObjectById(Site.class, id);
+      landing = mgr.getObjectById(Landing.class, id);
     } finally {
       mgr.close();
     }
-    return site;
+    return landing;
   }
 
   /**
@@ -89,21 +89,21 @@ public class SiteEndpoint {
    * exists in the datastore, an exception is thrown.
    * It uses HTTP POST method.
    *
-   * @param site the entity to be inserted.
+   * @param landing the entity to be inserted.
    * @return The inserted entity.
    */
-  @ApiMethod(name = "insertSite")
-  public Site insertSite(Site site) {
+  @ApiMethod(name = "insertLanding")
+  public Landing insertLanding(Landing landing) {
     PersistenceManager mgr = getPersistenceManager();
     try {
-      if (containsSite(site)) {
+      if (containsLanding(landing)) {
         throw new EntityExistsException("Object already exists");
       }
-      mgr.makePersistent(site);
+      mgr.makePersistent(landing);
     } finally {
       mgr.close();
     }
-    return site;
+    return landing;
   }
 
   /**
@@ -111,21 +111,21 @@ public class SiteEndpoint {
    * exist in the datastore, an exception is thrown.
    * It uses HTTP PUT method.
    *
-   * @param site the entity to be updated.
+   * @param landing the entity to be updated.
    * @return The updated entity.
    */
-  @ApiMethod(name = "updateSite")
-  public Site updateSite(Site site) {
+  @ApiMethod(name = "updateLanding")
+  public Landing updateLanding(Landing landing) {
     PersistenceManager mgr = getPersistenceManager();
     try {
-      if (!containsSite(site)) {
+      if (!containsLanding(landing)) {
         throw new EntityNotFoundException("Object does not exist");
       }
-      mgr.makePersistent(site);
+      mgr.makePersistent(landing);
     } finally {
       mgr.close();
     }
-    return site;
+    return landing;
   }
 
   /**
@@ -134,22 +134,22 @@ public class SiteEndpoint {
    *
    * @param id the primary key of the entity to be deleted.
    */
-  @ApiMethod(name = "removeSite")
-  public void removeSite(@Named("id") Long id) {
+  @ApiMethod(name = "removeLanding")
+  public void removeLanding(@Named("id") Long id) {
     PersistenceManager mgr = getPersistenceManager();
     try {
-      Site site = mgr.getObjectById(Site.class, id);
-      mgr.deletePersistent(site);
+      Landing landing = mgr.getObjectById(Landing.class, id);
+      mgr.deletePersistent(landing);
     } finally {
       mgr.close();
     }
   }
 
-  private boolean containsSite(Site site) {
+  private boolean containsLanding(Landing landing) {
     PersistenceManager mgr = getPersistenceManager();
     boolean contains = true;
     try {
-      mgr.getObjectById(Site.class, site.getEncodedKey());
+      mgr.getObjectById(Landing.class, landing.getEncodedKey());
     } catch (javax.jdo.JDOObjectNotFoundException ex) {
       contains = false;
     } finally {

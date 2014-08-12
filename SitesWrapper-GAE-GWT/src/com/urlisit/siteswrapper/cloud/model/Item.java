@@ -13,6 +13,7 @@ import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
+import com.google.appengine.api.datastore.Key;
 import com.google.gwt.user.client.rpc.IsSerializable;
 
 /**
@@ -34,7 +35,7 @@ public class Item implements IsSerializable {
   @PrimaryKey
   @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
   @Extension(vendorName="datanucleus", key="gae.encoded-pk", value="true")
-  private String encodedKey;
+  private Long encodedKey;
   
   /**
    * One of either current, previous or SimpleDateFormat. Used to mark a
@@ -700,10 +701,9 @@ public class Item implements IsSerializable {
     return this.lastmod;
   }
 
-public Object getEncodedKey() {
-    // TODO Auto-generated method stub
+  public Long getEncodedKey() {
     return encodedKey;
-}
+  }
   
   /**
    * Intended only for debugging.

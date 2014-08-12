@@ -1,3 +1,3 @@
 # Module siteswrapper
 # RPC service class, partial path of RPC policy file
-com.urlisit.siteswrapper.cloud.client.Rpc, 824E157DF49202C6A2687530DADFB919.gwt.rpc
+com.urlisit.siteswrapper.cloud.client.Rpc, F9C6B1AB1053AAEFF6A20B31B48C1F24.gwt.rpc
