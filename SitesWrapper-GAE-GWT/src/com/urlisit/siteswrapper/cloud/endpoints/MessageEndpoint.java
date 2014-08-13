@@ -1,4 +1,4 @@
-package com.urlisit.siteswrapper.cloud.server;
+package com.urlisit.siteswrapper.cloud.endpoints;
 
 import java.io.IOException;
 import java.util.List;
@@ -20,6 +20,7 @@ import com.google.appengine.api.datastore.Cursor;
 import com.google.appengine.datanucleus.query.JPACursorHelper;
 import com.urlisit.siteswrapper.cloud.model.DeviceInfo;
 import com.urlisit.siteswrapper.cloud.model.MessageData;
+import com.urlisit.siteswrapper.cloud.server.EMF;
 
 
 /**

@@ -27,6 +27,48 @@
   "ownerName" : "urlisit.com",
   "packagePath" : "siteswrapper.cloud.model",
   "methods" : {
+    "styleendpoint.removeStyle" : {
+      "path" : "style/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.endpoints.StyleEndpoint.removeStyle",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "styleendpoint.getStyle" : {
+      "path" : "style/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.endpoints.StyleEndpoint.getStyle",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "styleendpoint.listStyle" : {
       "path" : "style",
       "httpMethod" : "GET",
@@ -34,7 +76,7 @@
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.StyleEndpoint.listStyle",
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.endpoints.StyleEndpoint.listStyle",
       "request" : {
         "parameters" : {
           "cursor" : {
@@ -52,27 +94,6 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "styleendpoint.getStyle" : {
-      "path" : "style/{id}",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.StyleEndpoint.getStyle",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "string",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "styleendpoint.insertStyle" : {
       "path" : "style",
       "httpMethod" : "POST",
@@ -80,7 +101,7 @@
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.StyleEndpoint.insertStyle",
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.endpoints.StyleEndpoint.insertStyle",
       "request" : {
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
@@ -96,7 +117,7 @@
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.StyleEndpoint.updateStyle",
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.endpoints.StyleEndpoint.updateStyle",
       "request" : {
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
@@ -104,46 +125,10 @@
       "response" : {
         "body" : "autoTemplate(backendResponse)"
       }
-    },
-    "styleendpoint.removeStyle" : {
-      "path" : "style/{id}",
-      "httpMethod" : "DELETE",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.StyleEndpoint.removeStyle",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "string",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "empty"
-      }
     }
   },
   "descriptor" : {
     "schemas" : {
-      "CollectionResponse_Style" : {
-        "id" : "CollectionResponse_Style",
-        "type" : "object",
-        "properties" : {
-          "items" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "Style"
-            }
-          },
-          "nextPageToken" : {
-            "type" : "string"
-          }
-        }
-      },
       "Style" : {
         "id" : "Style",
         "type" : "object",
@@ -192,20 +177,37 @@
       "_any" : {
         "id" : "_any",
         "type" : "any"
+      },
+      "CollectionResponse_Style" : {
+        "id" : "CollectionResponse_Style",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Style"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
       }
     },
     "methods" : {
-      "com.urlisit.siteswrapper.cloud.server.StyleEndpoint.listStyle" : {
+      "com.urlisit.siteswrapper.cloud.endpoints.StyleEndpoint.removeStyle" : {
+      },
+      "com.urlisit.siteswrapper.cloud.endpoints.StyleEndpoint.getStyle" : {
+        "response" : {
+          "$ref" : "Style"
+        }
+      },
+      "com.urlisit.siteswrapper.cloud.endpoints.StyleEndpoint.listStyle" : {
         "response" : {
           "$ref" : "CollectionResponse_Style"
         }
       },
-      "com.urlisit.siteswrapper.cloud.server.StyleEndpoint.getStyle" : {
-        "response" : {
-          "$ref" : "Style"
-        }
-      },
-      "com.urlisit.siteswrapper.cloud.server.StyleEndpoint.insertStyle" : {
+      "com.urlisit.siteswrapper.cloud.endpoints.StyleEndpoint.insertStyle" : {
         "request" : {
           "$ref" : "Style"
         },
@@ -213,15 +215,13 @@
           "$ref" : "Style"
         }
       },
-      "com.urlisit.siteswrapper.cloud.server.StyleEndpoint.updateStyle" : {
+      "com.urlisit.siteswrapper.cloud.endpoints.StyleEndpoint.updateStyle" : {
         "request" : {
           "$ref" : "Style"
         },
         "response" : {
           "$ref" : "Style"
         }
-      },
-      "com.urlisit.siteswrapper.cloud.server.StyleEndpoint.removeStyle" : {
       }
     }
   }

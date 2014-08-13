@@ -1,6 +1,7 @@
-package com.urlisit.siteswrapper.cloud.server;
+package com.urlisit.siteswrapper.cloud.endpoints;
 
-import com.urlisit.siteswrapper.cloud.model.Item;
+import com.urlisit.siteswrapper.cloud.model.Site;
+import com.urlisit.siteswrapper.cloud.server.PMF;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
@@ -18,8 +19,8 @@ import javax.persistence.EntityNotFoundException;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-@Api(name = "itemendpoint", namespace = @ApiNamespace(ownerDomain = "urlisit.com", ownerName = "urlisit.com", packagePath = "siteswrapper.cloud.model"))
-public class ItemEndpoint {
+@Api(name = "siteendpoint", namespace = @ApiNamespace(ownerDomain = "urlisit.com", ownerName = "urlisit.com", packagePath = "siteswrapper.cloud.model"))
+public class SiteEndpoint {
 
   /**
    * This method lists all the entities inserted in datastore.
@@ -29,16 +30,16 @@ public class ItemEndpoint {
    * persisted and a cursor to the next page.
    */
   @SuppressWarnings({ "unchecked", "unused" })
-  @ApiMethod(name = "listItem")
-  public CollectionResponse<Item> listItem(@Nullable @Named("cursor") String cursorString, @Nullable @Named("limit") Integer limit) {
+  @ApiMethod(name = "listSite")
+  public CollectionResponse<Site> listSite(@Nullable @Named("cursor") String cursorString, @Nullable @Named("limit") Integer limit) {
 
     PersistenceManager mgr = null;
     Cursor cursor = null;
-    List<Item> execute = null;
+    List<Site> execute = null;
 
     try {
       mgr = getPersistenceManager();
-      Query query = mgr.newQuery(Item.class);
+      Query query = mgr.newQuery(Site.class);
       if (cursorString != null && cursorString != "") {
         cursor = Cursor.fromWebSafeString(cursorString);
         HashMap<String, Object> extensionMap = new HashMap<String, Object>();
@@ -50,20 +51,20 @@ public class ItemEndpoint {
         query.setRange(0, limit);
       }
 
-      execute = (List<Item>) query.execute();
+      execute = (List<Site>) query.execute();
       cursor = JDOCursorHelper.getCursor(execute);
       if (cursor != null)
         cursorString = cursor.toWebSafeString();
 
       // Tight loop for fetching all entities from datastore and accomodate
       // for lazy fetch.
-      for (Item obj : execute)
+      for (Site obj : execute)
         ;
     } finally {
       mgr.close();
     }
 
-    return CollectionResponse.<Item> builder().setItems(execute).setNextPageToken(cursorString).build();
+    return CollectionResponse.<Site> builder().setItems(execute).setNextPageToken(cursorString).build();
   }
 
   /**
@@ -72,16 +73,16 @@ public class ItemEndpoint {
    * @param id the primary key of the java bean.
    * @return The entity with primary key id.
    */
-  @ApiMethod(name = "getItem")
-  public Item getItem(@Named("id") Long id) {
+  @ApiMethod(name = "getSite")
+  public Site getSite(@Named("id") String id) {
     PersistenceManager mgr = getPersistenceManager();
-    Item item = null;
+    Site site = null;
     try {
-      item = mgr.getObjectById(Item.class, id);
+      site = mgr.getObjectById(Site.class, id);
     } finally {
       mgr.close();
     }
-    return item;
+    return site;
   }
 
   /**
@@ -89,21 +90,21 @@ public class ItemEndpoint {
    * exists in the datastore, an exception is thrown.
    * It uses HTTP POST method.
    *
-   * @param item the entity to be inserted.
+   * @param site the entity to be inserted.
    * @return The inserted entity.
    */
-  @ApiMethod(name = "insertItem")
-  public Item insertItem(Item item) {
+  @ApiMethod(name = "insertSite")
+  public Site insertSite(Site site) {
     PersistenceManager mgr = getPersistenceManager();
     try {
-      if (containsItem(item)) {
+      if (containsSite(site)) {
         throw new EntityExistsException("Object already exists");
       }
-      mgr.makePersistent(item);
+      mgr.makePersistent(site);
     } finally {
       mgr.close();
     }
-    return item;
+    return site;
   }
 
   /**
@@ -111,21 +112,21 @@ public class ItemEndpoint {
    * exist in the datastore, an exception is thrown.
    * It uses HTTP PUT method.
    *
-   * @param item the entity to be updated.
+   * @param site the entity to be updated.
    * @return The updated entity.
    */
-  @ApiMethod(name = "updateItem")
-  public Item updateItem(Item item) {
+  @ApiMethod(name = "updateSite")
+  public Site updateSite(Site site) {
     PersistenceManager mgr = getPersistenceManager();
     try {
-      if (!containsItem(item)) {
+      if (!containsSite(site)) {
         throw new EntityNotFoundException("Object does not exist");
       }
-      mgr.makePersistent(item);
+      mgr.makePersistent(site);
     } finally {
       mgr.close();
     }
-    return item;
+    return site;
   }
 
   /**
@@ -134,22 +135,22 @@ public class ItemEndpoint {
    *
    * @param id the primary key of the entity to be deleted.
    */
-  @ApiMethod(name = "removeItem")
-  public void removeItem(@Named("id") Long id) {
+  @ApiMethod(name = "removeSite")
+  public void removeSite(@Named("id") String id) {
     PersistenceManager mgr = getPersistenceManager();
     try {
-      Item item = mgr.getObjectById(Item.class, id);
-      mgr.deletePersistent(item);
+      Site site = mgr.getObjectById(Site.class, id);
+      mgr.deletePersistent(site);
     } finally {
       mgr.close();
     }
   }
 
-  private boolean containsItem(Item item) {
+  private boolean containsSite(Site site) {
     PersistenceManager mgr = getPersistenceManager();
     boolean contains = true;
     try {
-      mgr.getObjectById(Item.class, item.getEncodedKey());
+      mgr.getObjectById(Site.class, site.getEncodedKey());
     } catch (javax.jdo.JDOObjectNotFoundException ex) {
       contains = false;
     } finally {

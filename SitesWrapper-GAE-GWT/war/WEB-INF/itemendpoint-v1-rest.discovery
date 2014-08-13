@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"MKGA2miAJpVGF7yQTQhsoDXpye8/4MViMbnjMtQ5rCUSvGVR2loTlKU\"",
+ "etag": "\"MKGA2miAJpVGF7yQTQhsoDXpye8/B7orIlvo3RFFAwOKKd50ktAcLOI\"",
  "discoveryVersion": "v1",
  "id": "itemendpoint:v1",
  "name": "itemendpoint",
@@ -97,8 +97,7 @@
      "type": "string"
     },
     "encodedKey": {
-     "type": "string",
-     "format": "int64"
+     "$ref": "_any"
     },
     "imageUrl": {
      "type": "string"
@@ -182,6 +181,10 @@
      "type": "string"
     }
    }
+  },
+  "_any": {
+   "id": "_any",
+   "type": "any"
   }
  },
  "methods": {
@@ -193,7 +196,6 @@
     "id": {
      "type": "string",
      "required": true,
-     "format": "int64",
      "location": "path"
     }
    },
@@ -252,7 +254,6 @@
     "id": {
      "type": "string",
      "required": true,
-     "format": "int64",
      "location": "path"
     }
    },

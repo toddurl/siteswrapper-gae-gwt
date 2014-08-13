@@ -27,20 +27,25 @@
   "ownerName" : "urlisit.com",
   "packagePath" : "siteswrapper.cloud.model",
   "methods" : {
-    "siteendpoint.updateSite" : {
-      "path" : "site",
-      "httpMethod" : "PUT",
+    "siteendpoint.removeSite" : {
+      "path" : "site/{id}",
+      "httpMethod" : "DELETE",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.SiteEndpoint.updateSite",
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.endpoints.SiteEndpoint.removeSite",
       "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
+        "parameters" : {
+          "id" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
       },
       "response" : {
-        "body" : "autoTemplate(backendResponse)"
+        "body" : "empty"
       }
     },
     "siteendpoint.listSite" : {
@@ -50,7 +55,7 @@
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.SiteEndpoint.listSite",
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.endpoints.SiteEndpoint.listSite",
       "request" : {
         "parameters" : {
           "cursor" : {
@@ -75,34 +80,13 @@
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.SiteEndpoint.insertSite",
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.endpoints.SiteEndpoint.insertSite",
       "request" : {
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "siteendpoint.removeSite" : {
-      "path" : "site/{id}",
-      "httpMethod" : "DELETE",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.SiteEndpoint.removeSite",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "empty"
       }
     },
     "siteendpoint.getSite" : {
@@ -112,11 +96,11 @@
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.SiteEndpoint.getSite",
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.endpoints.SiteEndpoint.getSite",
       "request" : {
         "parameters" : {
           "id" : {
-            "type" : "int64",
+            "type" : "string",
             "required" : true
           }
         },
@@ -125,10 +109,41 @@
       "response" : {
         "body" : "autoTemplate(backendResponse)"
       }
+    },
+    "siteendpoint.updateSite" : {
+      "path" : "site",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.endpoints.SiteEndpoint.updateSite",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
     }
   },
   "descriptor" : {
     "schemas" : {
+      "CollectionResponse_Site" : {
+        "id" : "CollectionResponse_Site",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Site"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      },
       "Site" : {
         "id" : "Site",
         "type" : "object",
@@ -262,38 +277,17 @@
         "id" : "DisplayLogoAs",
         "type" : "string",
         "enum" : [ "IMAGE", "HTML", "NONE" ]
-      },
-      "CollectionResponse_Site" : {
-        "id" : "CollectionResponse_Site",
-        "type" : "object",
-        "properties" : {
-          "items" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "Site"
-            }
-          },
-          "nextPageToken" : {
-            "type" : "string"
-          }
-        }
       }
     },
     "methods" : {
-      "com.urlisit.siteswrapper.cloud.server.SiteEndpoint.updateSite" : {
-        "request" : {
-          "$ref" : "Site"
-        },
-        "response" : {
-          "$ref" : "Site"
-        }
+      "com.urlisit.siteswrapper.cloud.endpoints.SiteEndpoint.removeSite" : {
       },
-      "com.urlisit.siteswrapper.cloud.server.SiteEndpoint.listSite" : {
+      "com.urlisit.siteswrapper.cloud.endpoints.SiteEndpoint.listSite" : {
         "response" : {
           "$ref" : "CollectionResponse_Site"
         }
       },
-      "com.urlisit.siteswrapper.cloud.server.SiteEndpoint.insertSite" : {
+      "com.urlisit.siteswrapper.cloud.endpoints.SiteEndpoint.insertSite" : {
         "request" : {
           "$ref" : "Site"
         },
@@ -301,9 +295,15 @@
           "$ref" : "Site"
         }
       },
-      "com.urlisit.siteswrapper.cloud.server.SiteEndpoint.removeSite" : {
+      "com.urlisit.siteswrapper.cloud.endpoints.SiteEndpoint.getSite" : {
+        "response" : {
+          "$ref" : "Site"
+        }
       },
-      "com.urlisit.siteswrapper.cloud.server.SiteEndpoint.getSite" : {
+      "com.urlisit.siteswrapper.cloud.endpoints.SiteEndpoint.updateSite" : {
+        "request" : {
+          "$ref" : "Site"
+        },
         "response" : {
           "$ref" : "Site"
         }
