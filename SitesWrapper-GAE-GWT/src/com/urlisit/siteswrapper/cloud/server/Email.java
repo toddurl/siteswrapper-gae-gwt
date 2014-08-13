@@ -40,32 +40,31 @@ public class Email extends HttpServlet {
     Properties props = new Properties(); 
     Session session = Session.getDefaultInstance(props, null); 
     MimeMessage message = null;
+    String subject = "";
+    Object content = "";
     String contentId = "";
-    String contentMD5 = "";
     String contentType = "";
     String description = "";
-    String disposition = "";
     String messageId = "";
-    String subject = "";
     try {
       message = new MimeMessage(session, req.getInputStream());
-      contentId = message.getContentID();
-      contentMD5 = message.getContentMD5();
-      contentType = message.getContentType();
-      description = message.getDescription();
-      disposition = message.getDisposition();
-      messageId = message.getMessageID();
       subject = message.getSubject();
+      content = message.toString();
+      contentId = message.getContentID();
+      contentType = message.getContentType();
+      content = message.getContent();
+      description = message.getDescription();
+      messageId = message.getMessageID();
     } catch (MessagingException e) {
       e.printStackTrace();
     }
-    log.warning("Received email!");
+    log.warning("RECEIVED EMAIL!");
+    log.warning("subject=" + subject);
+    log.warning("Content=" + content);
     log.warning("ContentID=" + contentId);
-    log.warning("ContentMD5=" + contentMD5);
     log.warning("ContentType=" + contentType);
     log.warning("Description=" + description);
-    log.warning("Diposition=" + disposition);
+    log.warning("Content=" + content.toString());
     log.warning("MessageID=" + messageId);
-    log.warning("subject=" + subject);
   }
 }
