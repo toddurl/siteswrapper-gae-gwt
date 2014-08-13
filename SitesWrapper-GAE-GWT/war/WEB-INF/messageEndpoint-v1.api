@@ -34,7 +34,7 @@
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.MessageEndpoint.sendMessage",
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.endpoints.MessageEndpoint.sendMessage",
       "request" : {
         "parameters" : {
           "message" : {
@@ -55,7 +55,7 @@
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.MessageEndpoint.listMessages",
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.endpoints.MessageEndpoint.listMessages",
       "request" : {
         "parameters" : {
           "cursor" : {
@@ -124,22 +124,22 @@
           "name" : {
             "type" : "string"
           },
+          "complete" : {
+            "type" : "boolean"
+          },
           "namespace" : {
             "type" : "string"
           },
           "parent" : {
             "$ref" : "Key"
-          },
-          "complete" : {
-            "type" : "boolean"
           }
         }
       }
     },
     "methods" : {
-      "com.urlisit.siteswrapper.cloud.server.MessageEndpoint.sendMessage" : {
+      "com.urlisit.siteswrapper.cloud.endpoints.MessageEndpoint.sendMessage" : {
       },
-      "com.urlisit.siteswrapper.cloud.server.MessageEndpoint.listMessages" : {
+      "com.urlisit.siteswrapper.cloud.endpoints.MessageEndpoint.listMessages" : {
         "response" : {
           "$ref" : "CollectionResponse_MessageData"
         }

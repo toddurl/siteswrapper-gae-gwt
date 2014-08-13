@@ -1,6 +1,7 @@
-package com.urlisit.siteswrapper.cloud.server;
+package com.urlisit.siteswrapper.cloud.endpoints;
 
 import com.urlisit.siteswrapper.cloud.model.DeviceInfo;
+import com.urlisit.siteswrapper.cloud.server.EMF;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;

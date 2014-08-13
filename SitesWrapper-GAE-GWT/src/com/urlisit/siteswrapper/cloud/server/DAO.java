@@ -588,8 +588,10 @@ public final class DAO {
     final List<Site> sites = (List<Site>) query.execute("current");
     Site site, detached = null;
     if (sites.isEmpty()) {
+      log.warning("sites was empty");
       site = new Site();
       site.setEmpty(true);
+      return site;
     } else {
       site = sites.get(0);
     }
@@ -658,6 +660,9 @@ public final class DAO {
   public static Page getDefaultPage() {
     Page defaultPage = null;
     final Site site = getSite();
+    if (site.isEmpty()) {
+      log.warning("Site was empty while getting default page");
+    }
     final List<Page> pages = getPageList();
     for (Page page: pages) {
       if (site.getDefaultPage().equals(page.getPageName())) {

@@ -31,7 +31,7 @@ import com.urlisit.siteswrapper.cloud.model.Site;
 import com.urlisit.siteswrapper.cloud.server.DAO;
 
 /**
- * @author Todd Url <toddurl @ urlisit.com>
+ * @author Todd Url <toddurl@urlisit.com>
  *
  * @version $Revision: 1.0 $
  */

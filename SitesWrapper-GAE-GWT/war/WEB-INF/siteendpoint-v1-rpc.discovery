@@ -1,6 +1,6 @@
 {
  "kind": "discovery#rpcDescription",
- "etag": "\"MKGA2miAJpVGF7yQTQhsoDXpye8/p3utNsQaBPbXKiFY2ZFlWkYUCdQ\"",
+ "etag": "\"MKGA2miAJpVGF7yQTQhsoDXpye8/K-9AmAYhVh_cbs_fgXNVsPEO9PY\"",
  "discoveryVersion": "v1",
  "id": "siteendpoint:v1",
  "name": "siteendpoint",
@@ -138,8 +138,7 @@
      "type": "boolean"
     },
     "encodedKey": {
-     "type": "string",
-     "format": "int64"
+     "$ref": "_any"
     },
     "faviconUrl": {
      "type": "string"
@@ -248,8 +247,7 @@
    "parameters": {
     "id": {
      "type": "string",
-     "required": true,
-     "format": "int64"
+     "required": true
     }
    },
    "parameterOrder": [
@@ -303,8 +301,7 @@
    "parameters": {
     "id": {
      "type": "string",
-     "required": true,
-     "format": "int64"
+     "required": true
     }
    },
    "parameterOrder": [

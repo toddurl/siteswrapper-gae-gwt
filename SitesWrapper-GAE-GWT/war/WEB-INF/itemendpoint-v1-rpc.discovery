@@ -1,6 +1,6 @@
 {
  "kind": "discovery#rpcDescription",
- "etag": "\"MKGA2miAJpVGF7yQTQhsoDXpye8/4MViMbnjMtQ5rCUSvGVR2loTlKU\"",
+ "etag": "\"MKGA2miAJpVGF7yQTQhsoDXpye8/B7orIlvo3RFFAwOKKd50ktAcLOI\"",
  "discoveryVersion": "v1",
  "id": "itemendpoint:v1",
  "name": "itemendpoint",
@@ -95,8 +95,7 @@
      "type": "string"
     },
     "encodedKey": {
-     "type": "string",
-     "format": "int64"
+     "$ref": "_any"
     },
     "imageUrl": {
      "type": "string"
@@ -180,6 +179,10 @@
      "type": "string"
     }
    }
+  },
+  "_any": {
+   "id": "_any",
+   "type": "any"
   }
  },
  "methods": {
@@ -189,8 +192,7 @@
    "parameters": {
     "id": {
      "type": "string",
-     "required": true,
-     "format": "int64"
+     "required": true
     }
    },
    "parameterOrder": [
@@ -244,8 +246,7 @@
    "parameters": {
     "id": {
      "type": "string",
-     "required": true,
-     "format": "int64"
+     "required": true
     }
    },
    "parameterOrder": [

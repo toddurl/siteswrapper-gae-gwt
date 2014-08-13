@@ -27,6 +27,38 @@
   "ownerName" : "urlisit.com",
   "packagePath" : "siteswrapper.cloud.model",
   "methods" : {
+    "itemendpoint.insertItem" : {
+      "path" : "item",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.endpoints.ItemEndpoint.insertItem",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "itemendpoint.updateItem" : {
+      "path" : "item",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.endpoints.ItemEndpoint.updateItem",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "itemendpoint.listItem" : {
       "path" : "item",
       "httpMethod" : "GET",
@@ -34,7 +66,7 @@
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.ItemEndpoint.listItem",
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.endpoints.ItemEndpoint.listItem",
       "request" : {
         "parameters" : {
           "cursor" : {
@@ -59,47 +91,15 @@
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.ItemEndpoint.getItem",
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.endpoints.ItemEndpoint.getItem",
       "request" : {
         "parameters" : {
           "id" : {
-            "type" : "int64",
+            "type" : "string",
             "required" : true
           }
         },
         "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "itemendpoint.updateItem" : {
-      "path" : "item",
-      "httpMethod" : "PUT",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.ItemEndpoint.updateItem",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "itemendpoint.insertItem" : {
-      "path" : "item",
-      "httpMethod" : "POST",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.ItemEndpoint.insertItem",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -112,11 +112,11 @@
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.ItemEndpoint.removeItem",
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.endpoints.ItemEndpoint.removeItem",
       "request" : {
         "parameters" : {
           "id" : {
-            "type" : "int64",
+            "type" : "string",
             "required" : true
           }
         },
@@ -129,28 +129,12 @@
   },
   "descriptor" : {
     "schemas" : {
-      "CollectionResponse_Item" : {
-        "id" : "CollectionResponse_Item",
-        "type" : "object",
-        "properties" : {
-          "items" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "Item"
-            }
-          },
-          "nextPageToken" : {
-            "type" : "string"
-          }
-        }
-      },
       "Item" : {
         "id" : "Item",
         "type" : "object",
         "properties" : {
           "encodedKey" : {
-            "type" : "string",
-            "format" : "int64"
+            "$ref" : "_any"
           },
           "revision" : {
             "type" : "string"
@@ -237,36 +221,55 @@
             "type" : "string"
           }
         }
+      },
+      "_any" : {
+        "id" : "_any",
+        "type" : "any"
+      },
+      "CollectionResponse_Item" : {
+        "id" : "CollectionResponse_Item",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Item"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
       }
     },
     "methods" : {
-      "com.urlisit.siteswrapper.cloud.server.ItemEndpoint.listItem" : {
+      "com.urlisit.siteswrapper.cloud.endpoints.ItemEndpoint.insertItem" : {
+        "request" : {
+          "$ref" : "Item"
+        },
+        "response" : {
+          "$ref" : "Item"
+        }
+      },
+      "com.urlisit.siteswrapper.cloud.endpoints.ItemEndpoint.updateItem" : {
+        "request" : {
+          "$ref" : "Item"
+        },
+        "response" : {
+          "$ref" : "Item"
+        }
+      },
+      "com.urlisit.siteswrapper.cloud.endpoints.ItemEndpoint.listItem" : {
         "response" : {
           "$ref" : "CollectionResponse_Item"
         }
       },
-      "com.urlisit.siteswrapper.cloud.server.ItemEndpoint.getItem" : {
+      "com.urlisit.siteswrapper.cloud.endpoints.ItemEndpoint.getItem" : {
         "response" : {
           "$ref" : "Item"
         }
       },
-      "com.urlisit.siteswrapper.cloud.server.ItemEndpoint.updateItem" : {
-        "request" : {
-          "$ref" : "Item"
-        },
-        "response" : {
-          "$ref" : "Item"
-        }
-      },
-      "com.urlisit.siteswrapper.cloud.server.ItemEndpoint.insertItem" : {
-        "request" : {
-          "$ref" : "Item"
-        },
-        "response" : {
-          "$ref" : "Item"
-        }
-      },
-      "com.urlisit.siteswrapper.cloud.server.ItemEndpoint.removeItem" : {
+      "com.urlisit.siteswrapper.cloud.endpoints.ItemEndpoint.removeItem" : {
       }
     }
   }

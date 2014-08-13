@@ -43,7 +43,7 @@ public class Landing implements IsSerializable {
   @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
   @Extension(vendorName="datanucleus", key="gae.encoded-pk", value="true")
   @SuppressWarnings("unused")
-  private Key encodedKey;
+  private String encodedKey;
   
   /**
    * One of either current, previous or a SimpleDateFormat. Used to mark a configuration object before
@@ -715,7 +715,7 @@ public class Landing implements IsSerializable {
     return this.lastmod;
   }
   
-  public Object getEncodedKey() {
+  public String getEncodedKey() {
     return encodedKey;
   }
   

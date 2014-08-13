@@ -27,22 +27,6 @@
   "ownerName" : "urlisit.com",
   "packagePath" : "siteswrapper.cloud.model",
   "methods" : {
-    "pageendpoint.updatePage" : {
-      "path" : "page",
-      "httpMethod" : "PUT",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.PageEndpoint.updatePage",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "pageendpoint.insertPage" : {
       "path" : "page",
       "httpMethod" : "POST",
@@ -50,7 +34,7 @@
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.PageEndpoint.insertPage",
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.endpoints.PageEndpoint.insertPage",
       "request" : {
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
@@ -66,7 +50,7 @@
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.PageEndpoint.removePage",
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.endpoints.PageEndpoint.removePage",
       "request" : {
         "parameters" : {
           "id" : {
@@ -87,7 +71,7 @@
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.PageEndpoint.getPage",
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.endpoints.PageEndpoint.getPage",
       "request" : {
         "parameters" : {
           "id" : {
@@ -101,6 +85,22 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
+    "pageendpoint.updatePage" : {
+      "path" : "page",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.endpoints.PageEndpoint.updatePage",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "pageendpoint.listPage" : {
       "path" : "page",
       "httpMethod" : "GET",
@@ -108,7 +108,7 @@
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.PageEndpoint.listPage",
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.endpoints.PageEndpoint.listPage",
       "request" : {
         "parameters" : {
           "cursor" : {
@@ -297,7 +297,7 @@
       }
     },
     "methods" : {
-      "com.urlisit.siteswrapper.cloud.server.PageEndpoint.updatePage" : {
+      "com.urlisit.siteswrapper.cloud.endpoints.PageEndpoint.insertPage" : {
         "request" : {
           "$ref" : "Page"
         },
@@ -305,7 +305,14 @@
           "$ref" : "Page"
         }
       },
-      "com.urlisit.siteswrapper.cloud.server.PageEndpoint.insertPage" : {
+      "com.urlisit.siteswrapper.cloud.endpoints.PageEndpoint.removePage" : {
+      },
+      "com.urlisit.siteswrapper.cloud.endpoints.PageEndpoint.getPage" : {
+        "response" : {
+          "$ref" : "Page"
+        }
+      },
+      "com.urlisit.siteswrapper.cloud.endpoints.PageEndpoint.updatePage" : {
         "request" : {
           "$ref" : "Page"
         },
@@ -313,14 +320,7 @@
           "$ref" : "Page"
         }
       },
-      "com.urlisit.siteswrapper.cloud.server.PageEndpoint.removePage" : {
-      },
-      "com.urlisit.siteswrapper.cloud.server.PageEndpoint.getPage" : {
-        "response" : {
-          "$ref" : "Page"
-        }
-      },
-      "com.urlisit.siteswrapper.cloud.server.PageEndpoint.listPage" : {
+      "com.urlisit.siteswrapper.cloud.endpoints.PageEndpoint.listPage" : {
         "response" : {
           "$ref" : "CollectionResponse_Page"
         }

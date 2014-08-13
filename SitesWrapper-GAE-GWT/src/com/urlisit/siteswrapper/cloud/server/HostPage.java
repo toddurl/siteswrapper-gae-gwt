@@ -134,7 +134,7 @@ public class HostPage {
      * the module XML file of the GWT project.
      */
     
-    private String  gwtModule = new Scanner(this.getClass().getResourceAsStream("../URL_IS_IT.gwt.x" +
+    private String  gwtModule = new Scanner(this.getClass().getResourceAsStream("../SitesWrapper.gwt.x" +
         "ml")).useDelimiter(EOF).next();
 
     /**

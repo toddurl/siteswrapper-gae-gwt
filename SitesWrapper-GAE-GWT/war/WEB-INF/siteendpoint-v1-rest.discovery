@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"MKGA2miAJpVGF7yQTQhsoDXpye8/p3utNsQaBPbXKiFY2ZFlWkYUCdQ\"",
+ "etag": "\"MKGA2miAJpVGF7yQTQhsoDXpye8/K-9AmAYhVh_cbs_fgXNVsPEO9PY\"",
  "discoveryVersion": "v1",
  "id": "siteendpoint:v1",
  "name": "siteendpoint",
@@ -140,8 +140,7 @@
      "type": "boolean"
     },
     "encodedKey": {
-     "type": "string",
-     "format": "int64"
+     "$ref": "_any"
     },
     "faviconUrl": {
      "type": "string"
@@ -252,7 +251,6 @@
     "id": {
      "type": "string",
      "required": true,
-     "format": "int64",
      "location": "path"
     }
    },
@@ -311,7 +309,6 @@
     "id": {
      "type": "string",
      "required": true,
-     "format": "int64",
      "location": "path"
     }
    },

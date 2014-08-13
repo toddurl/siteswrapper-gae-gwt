@@ -1,6 +1,7 @@
-package com.urlisit.siteswrapper.cloud.server;
+package com.urlisit.siteswrapper.cloud.endpoints;
 
 import com.urlisit.siteswrapper.cloud.model.Landing;
+import com.urlisit.siteswrapper.cloud.server.PMF;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
@@ -73,7 +74,7 @@ public class LandingEndpoint {
    * @return The entity with primary key id.
    */
   @ApiMethod(name = "getLanding")
-  public Landing getLanding(@Named("id") Long id) {
+  public Landing getLanding(@Named("id") String id) {
     PersistenceManager mgr = getPersistenceManager();
     Landing landing = null;
     try {
@@ -135,7 +136,7 @@ public class LandingEndpoint {
    * @param id the primary key of the entity to be deleted.
    */
   @ApiMethod(name = "removeLanding")
-  public void removeLanding(@Named("id") Long id) {
+  public void removeLanding(@Named("id") String id) {
     PersistenceManager mgr = getPersistenceManager();
     try {
       Landing landing = mgr.getObjectById(Landing.class, id);

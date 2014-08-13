@@ -5,7 +5,6 @@
     <servlet-name>greetServlet</servlet-name>
     <servlet-class>com.urlisit.siteswrapper.cloud.server.GreetingServiceImpl</servlet-class>
   </servlet>
-  
   <servlet-mapping>
     <servlet-name>greetServlet</servlet-name>
     <url-pattern>/siteswrapper/greet</url-pattern>
@@ -19,29 +18,32 @@
     <servlet-name>rpcServlet</servlet-name>
     <url-pattern>/siteswrapper/rpc</url-pattern>
   </servlet-mapping>
-  
+
+  <!-- Combined with the "mail" inbound services difinition in appengine-web.xml enables the server to receive email -->
+  <servlet>
+    <servlet-name>emailServlet</servlet-name>
+    <servlet-class>com.urlisit.siteswrapper.cloud.server.Email</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>emailServlet</servlet-name>
+    <url-pattern>/_ah/mail/*</url-pattern>
+  </servlet-mapping>
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>mail</web-resource-name>
+      <url-pattern>/_ah/mail/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>admin</role-name>
+    </auth-constraint>
+  </security-constraint>
+ 
   <servlet>
     <servlet-name>restServlet</servlet-name>
     <servlet-class>com.urlisit.siteswrapper.cloud.server.RESTful</servlet-class>
     <init-param>
-      <param-name>GoogleDocsConfigurationDocumentId</param-name>
-      <param-value>1LNbFMzY1feWFr8X4pwFIKtEuEAS1OakKsUNvcuZhy3E</param-value>
-    </init-param>
-    <init-param>
-      <param-name>daoId</param-name>
-      <param-value>1LNbFMzY1feWFr8X4pwFIKtEuEAS1OakKsUNvcuZhy3E</param-value>
-    </init-param>
-    <init-param>
-      <param-name>documentId</param-name>
-      <param-value>1LNbFMzY1feWFr8X4pwFIKtEuEAS1OakKsUNvcuZhy3E</param-value>
-    </init-param>
-    <init-param>
-        <param-name>GwtModuleName</param-name>
-        <param-value>siteswrapper</param-value>
-    </init-param>
-    <init-param>
         <param-name>GoogleAnalyticsWebPropertyID</param-name>
-        <param-value>UA-23056652-1</param-value>
+        <param-value>UA-53781224-1</param-value>
     </init-param>
     <init-param>
         <param-name>GoogleWebMasterToolsSiteVerificationCode</param-name>
@@ -59,7 +61,7 @@
   <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
   <init-param>
    <param-name>services</param-name>
-   <param-value>com.urlisit.siteswrapper.cloud.server.DeviceInfoEndpoint,com.urlisit.siteswrapper.cloud.server.ItemEndpoint,com.urlisit.siteswrapper.cloud.server.LandingEndpoint,com.urlisit.siteswrapper.cloud.server.MessageEndpoint,com.urlisit.siteswrapper.cloud.server.PageEndpoint,com.urlisit.siteswrapper.cloud.server.SiteEndpoint,com.urlisit.siteswrapper.cloud.server.StyleEndpoint</param-value>
+   <param-value>com.urlisit.siteswrapper.cloud.endpoints.DeviceInfoEndpoint,com.urlisit.siteswrapper.cloud.endpoints.ItemEndpoint,com.urlisit.siteswrapper.cloud.endpoints.LandingEndpoint,com.urlisit.siteswrapper.cloud.endpoints.MessageEndpoint,com.urlisit.siteswrapper.cloud.endpoints.PageEndpoint,com.urlisit.siteswrapper.cloud.endpoints.SiteEndpoint,com.urlisit.siteswrapper.cloud.endpoints.StyleEndpoint</param-value>
   </init-param>
  </servlet>
  <servlet-mapping>

@@ -34,11 +34,11 @@
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.LandingEndpoint.removeLanding",
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.endpoints.LandingEndpoint.removeLanding",
       "request" : {
         "parameters" : {
           "id" : {
-            "type" : "int64",
+            "type" : "string",
             "required" : true
           }
         },
@@ -48,22 +48,6 @@
         "body" : "empty"
       }
     },
-    "landingendpoint.insertLanding" : {
-      "path" : "landing",
-      "httpMethod" : "POST",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.LandingEndpoint.insertLanding",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "landingendpoint.updateLanding" : {
       "path" : "landing",
       "httpMethod" : "PUT",
@@ -71,7 +55,7 @@
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.LandingEndpoint.updateLanding",
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.endpoints.LandingEndpoint.updateLanding",
       "request" : {
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
@@ -87,15 +71,31 @@
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.LandingEndpoint.getLanding",
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.endpoints.LandingEndpoint.getLanding",
       "request" : {
         "parameters" : {
           "id" : {
-            "type" : "int64",
+            "type" : "string",
             "required" : true
           }
         },
         "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "landingendpoint.insertLanding" : {
+      "path" : "landing",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.endpoints.LandingEndpoint.insertLanding",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -108,7 +108,7 @@
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.urlisit.siteswrapper.cloud.server.LandingEndpoint.listLanding",
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.endpoints.LandingEndpoint.listLanding",
       "request" : {
         "parameters" : {
           "cursor" : {
@@ -134,7 +134,7 @@
         "type" : "object",
         "properties" : {
           "encodedKey" : {
-            "$ref" : "_any"
+            "type" : "string"
           },
           "revision" : {
             "type" : "string"
@@ -222,10 +222,6 @@
           }
         }
       },
-      "_any" : {
-        "id" : "_any",
-        "type" : "any"
-      },
       "CollectionResponse_Landing" : {
         "id" : "CollectionResponse_Landing",
         "type" : "object",
@@ -243,9 +239,9 @@
       }
     },
     "methods" : {
-      "com.urlisit.siteswrapper.cloud.server.LandingEndpoint.removeLanding" : {
+      "com.urlisit.siteswrapper.cloud.endpoints.LandingEndpoint.removeLanding" : {
       },
-      "com.urlisit.siteswrapper.cloud.server.LandingEndpoint.insertLanding" : {
+      "com.urlisit.siteswrapper.cloud.endpoints.LandingEndpoint.updateLanding" : {
         "request" : {
           "$ref" : "Landing"
         },
@@ -253,7 +249,12 @@
           "$ref" : "Landing"
         }
       },
-      "com.urlisit.siteswrapper.cloud.server.LandingEndpoint.updateLanding" : {
+      "com.urlisit.siteswrapper.cloud.endpoints.LandingEndpoint.getLanding" : {
+        "response" : {
+          "$ref" : "Landing"
+        }
+      },
+      "com.urlisit.siteswrapper.cloud.endpoints.LandingEndpoint.insertLanding" : {
         "request" : {
           "$ref" : "Landing"
         },
@@ -261,12 +262,7 @@
           "$ref" : "Landing"
         }
       },
-      "com.urlisit.siteswrapper.cloud.server.LandingEndpoint.getLanding" : {
-        "response" : {
-          "$ref" : "Landing"
-        }
-      },
-      "com.urlisit.siteswrapper.cloud.server.LandingEndpoint.listLanding" : {
+      "com.urlisit.siteswrapper.cloud.endpoints.LandingEndpoint.listLanding" : {
         "response" : {
           "$ref" : "CollectionResponse_Landing"
         }

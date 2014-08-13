@@ -26,15 +26,12 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 import javax.jdo.annotations.Extension;
 
-import com.google.appengine.api.datastore.Key;
 import com.google.gwt.i18n.client.Dictionary;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.IsSerializable;
-//import com.google.appengine.api.datastore.Text;
 
 /**
- * Holds the persistent description of a webapp. Instances of Site are created
- * and persisted to the datastore as the result of HTTP POST calls from Google
+ * Holds the persistent description of a web-app. Instances of Site are created
+ * and persisted to the data-store as the result of HTTP POST calls from Google
  * Apps Scripts running in Google Docs to the Rest servlet in Google App Engine.
  * 
  * @author Todd Url <toddurl @ yahoo.com>
@@ -51,7 +48,6 @@ public class Site implements IsSerializable {
    @PrimaryKey
    @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
    @Extension(vendorName="datanucleus", key="gae.encoded-pk", value="true")
-   @SuppressWarnings("unused")
    private String encodedKey;
 
   /**

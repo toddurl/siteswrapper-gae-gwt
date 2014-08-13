@@ -35,7 +35,7 @@ public class Item implements IsSerializable {
   @PrimaryKey
   @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
   @Extension(vendorName="datanucleus", key="gae.encoded-pk", value="true")
-  private Long encodedKey;
+  private String encodedKey;
   
   /**
    * One of either current, previous or SimpleDateFormat. Used to mark a
@@ -701,7 +701,7 @@ public class Item implements IsSerializable {
     return this.lastmod;
   }
 
-  public Long getEncodedKey() {
+  public Object getEncodedKey() {
     return encodedKey;
   }
   
