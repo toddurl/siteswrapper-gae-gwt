@@ -1,0 +1,12 @@
+com.urlisit.siteswrapper.cloud.client
+com.urlisit.siteswrapper.cloud.endpoints
+com.urlisit.siteswrapper.cloud.event
+com.urlisit.siteswrapper.cloud.factory
+com.urlisit.siteswrapper.cloud.model
+com.urlisit.siteswrapper.cloud.presenter
+com.urlisit.siteswrapper.cloud.resources
+com.urlisit.siteswrapper.cloud.server
+com.urlisit.siteswrapper.cloud.shared
+com.urlisit.siteswrapper.cloud.utilities
+com.urlisit.siteswrapper.cloud.view
+com.urlisit.siteswrapper.cloud.widgets
