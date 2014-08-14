@@ -94,22 +94,6 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "styleendpoint.updateStyle" : {
-      "path" : "style",
-      "httpMethod" : "PUT",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.urlisit.siteswrapper.cloud.endpoints.StyleEndpoint.updateStyle",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "styleendpoint.insertStyle" : {
       "path" : "style",
       "httpMethod" : "POST",
@@ -118,6 +102,22 @@
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
       "rosyMethod" : "com.urlisit.siteswrapper.cloud.endpoints.StyleEndpoint.insertStyle",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "styleendpoint.updateStyle" : {
+      "path" : "style",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.urlisit.siteswrapper.cloud.endpoints.StyleEndpoint.updateStyle",
       "request" : {
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
@@ -207,7 +207,7 @@
           "$ref" : "CollectionResponse_Style"
         }
       },
-      "com.urlisit.siteswrapper.cloud.endpoints.StyleEndpoint.updateStyle" : {
+      "com.urlisit.siteswrapper.cloud.endpoints.StyleEndpoint.insertStyle" : {
         "request" : {
           "$ref" : "Style"
         },
@@ -215,7 +215,7 @@
           "$ref" : "Style"
         }
       },
-      "com.urlisit.siteswrapper.cloud.endpoints.StyleEndpoint.insertStyle" : {
+      "com.urlisit.siteswrapper.cloud.endpoints.StyleEndpoint.updateStyle" : {
         "request" : {
           "$ref" : "Style"
         },

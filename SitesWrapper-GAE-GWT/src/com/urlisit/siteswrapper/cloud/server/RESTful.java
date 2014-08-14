@@ -197,7 +197,7 @@ public final class RESTful extends HttpServlet implements Cloneable {
    * <p>
    * Deserialization can be used to construct an object from a stream of bytes,
    * which may mimic a legitimate class. This could be used by an attacker to
-   * instantiate an object�s state.
+   * instantiate an objects state.
    * 
    * @param in
    * @throws IOException
