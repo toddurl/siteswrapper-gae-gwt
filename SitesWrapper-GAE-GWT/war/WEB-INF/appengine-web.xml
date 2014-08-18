@@ -4,6 +4,7 @@
   <version>mobile-1383423381415</version>
   <threadsafe>true</threadsafe>
   <system-properties>
+    <property name="siteswrapper.administrator" value="toddurl@urlisit.com"/>
     <property name="java.util.logging.config.file" value="WEB-INF/logging.properties"/>
     <property name="documentId" value="1LNbFMzY1feWFr8X4pwFIKtEuEAS1OakKsUNvcuZhy3E"/>
     <property name="documentAgent" value="Mozilla/5.0 (compatible; GoogleDocs; script; +http://docs.google.com)"/>

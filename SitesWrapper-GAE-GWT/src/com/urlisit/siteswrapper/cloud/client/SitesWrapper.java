@@ -35,8 +35,7 @@ public class SitesWrapper implements EntryPoint {
       @Override
       public void onSuccess(DTO pages) {
         for (Page page: pages.getPages()) {
-          factory.newView(factory.getPresenter(), factory.getSelector(), page, factory.getSite(), factory.getStyle(),
-              factory.getLiterals());
+          factory.newView(factory.getPresenter(), factory.getSelector(), page, factory.getSite(), factory.getStyle(), factory.getLiterals());
         }
         if (History.getToken().length() == 0) {
           History.newItem(factory.getSite().getDefaultPage(), false);

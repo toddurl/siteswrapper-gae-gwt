@@ -49,16 +49,17 @@ import javax.persistence.Id;
  * @version  1.0
  * @since    11-01-2011
  */
-@Entity
+//@Entity
+@PersistenceCapable(detachable="true")
 public class Page implements IsSerializable {
   /**
    * Ensures each persisted object has a unique key in the datastore
    */
-   @Id
-   //@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-   //private Long key;
+   @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
    @GeneratedValue(strategy=GenerationType.IDENTITY)
-   private Long encodedKey;
+   private Long key;
+   //@Id
+   //private Long encodedKey;
 
    /**
     * One of either current, previous or SimpleDateFormat. Used to mark a
@@ -336,12 +337,20 @@ public class Page implements IsSerializable {
    private String lastmod = new String();
 
    /**
+    * Method getId.
+    * @return Key
+    */
+   public long getId() {
+      return key;
+   }
+   
+   /**
     * Method getKey.
     * @return Key
     */
-   //public long getKey() {
-   //   return key;
-   //}
+   public long getKey() {
+      return key;
+   }
    
    /**
     * Method setRevision.
@@ -1145,8 +1154,8 @@ public class Page implements IsSerializable {
       return lastmod;
    }
    
-   public Object getEncodedKey() {
-     return encodedKey;
-   }
+   //public Object getEncodedKey() {
+   //  return encodedKey;
+   //}
 
 }
