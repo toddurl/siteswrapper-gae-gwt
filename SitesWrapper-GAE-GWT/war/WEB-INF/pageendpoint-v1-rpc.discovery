@@ -1,6 +1,6 @@
 {
  "kind": "discovery#rpcDescription",
- "etag": "\"MKGA2miAJpVGF7yQTQhsoDXpye8/E4J9QN-c1HW49B0rHAd4o2Z01ig\"",
+ "etag": "\"MKGA2miAJpVGF7yQTQhsoDXpye8/6uASGleCYtl5a9hICn947CzcMKc\"",
  "discoveryVersion": "v1",
  "id": "pageendpoint:v1",
  "name": "pageendpoint",
@@ -178,8 +178,13 @@
     "displayLogoAs": {
      "$ref": "DisplayLogoAs"
     },
-    "encodedKey": {
-     "$ref": "_any"
+    "id": {
+     "type": "string",
+     "format": "int64"
+    },
+    "key": {
+     "type": "string",
+     "format": "int64"
     },
     "languageTranslationEnabled": {
      "type": "boolean"
@@ -242,10 +247,6 @@
      "type": "string"
     }
    }
-  },
-  "_any": {
-   "id": "_any",
-   "type": "any"
   }
  },
  "methods": {

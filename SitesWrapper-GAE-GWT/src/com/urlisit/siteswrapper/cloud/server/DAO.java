@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
+import java.math.BigDecimal;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -27,13 +28,17 @@ import java.util.Scanner;
 import java.util.logging.Logger;
 
 import javax.jdo.Extent;
+import javax.jdo.JDOFatalUserException;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
+import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.mortbay.log.Log;
 
+import com.google.appengine.api.utils.SystemProperty;
+import com.urlisit.siteswrapper.cloud.model.DocumentId;
 import com.urlisit.siteswrapper.cloud.model.Landing;
 import com.urlisit.siteswrapper.cloud.model.Site;
 import com.urlisit.siteswrapper.cloud.model.LookAndFeel;
@@ -70,6 +75,11 @@ public final class DAO {
   private static PersistenceManager pm = PMF.get().getPersistenceManager();
 
   /**
+   * Provides static access to the data-nucleus entity manager
+   */
+  //private static EntityManager em = EMF.get().createEntityManager();
+
+  /**
    * Allows applications to obtain persistent instances, values, and aggregate data from the GAE
    * Data-store.
    */
@@ -79,14 +89,56 @@ public final class DAO {
    * Regular expression which matches end of line. Used to read the entire contents of a file and
    * return it as a String via Scanner.
    */
-  private static final String EOF = "\\Z";
+  public static final String EOF = "\\Z";
   
-  /**
+  /*
    * Suppresses the default constructor to enforce non-instantiability
    */
   private DAO() {
-    // Ensures non-instantiability from within
+    /*
+     * Ensures non-instantiability from within the class
+     */
     throw new AssertionError(); // $codepro.audit.disable thrownExceptions
+  }
+  
+  static String getDocumentId() {
+    final Extent<DocumentId> ids = pm.getExtent(DocumentId.class, false);
+    int i = 0;
+    for (DocumentId id : ids) {
+      if (i == BigDecimal.ZERO.intValue()) {
+        return id.getId();
+      }
+      i++;
+    }
+    return String.valueOf(false);
+  }
+  
+  static void setDocumentId(String documentId) {
+    final DocumentId id = new DocumentId();
+    id.setId(documentId);
+    pm.makePersistent(id);
+    //pm.close();
+  }
+
+  @SuppressWarnings("unused")
+  static void isInitialized(HttpServletRequest rep, HttpServletResponse resp) {
+    Extent<DocumentId> ids;
+    try {
+      ids = pm.getExtent(DocumentId.class, false);
+    } catch (JDOFatalUserException e) {
+      resp.setStatus(204);
+      return;
+    }
+    int i = 0;
+    for (DocumentId id : ids) {
+      i++;
+    }
+    if (i > BigDecimal.ZERO.intValue()) {
+      resp.setStatus(202);
+    } else {
+      resp.setStatus(204);
+    }
+    //pm.close();
   }
   
   /**
@@ -138,7 +190,6 @@ public final class DAO {
    */
   public static void updateSite(HttpServletRequest req, HttpServletResponse resp) throws
   IllegalArgumentException, IOException {
-    //checkSignature(req, resp);
     final PersistenceManager pm = PMF.get().getPersistenceManager();
     final Extent<Site> sites = pm.getExtent(Site.class, false);
     for (Site site : sites) {
@@ -199,7 +250,7 @@ public final class DAO {
     site.setEmpty(false);
     pm.makePersistent(site);
     pm.close();
-    resp.getWriter().write(getId());
+    resp.getWriter().write(getDocumentId());
     resp.setStatus(200);
   }
   
@@ -212,7 +263,6 @@ public final class DAO {
    */
   public static void updateStyle(HttpServletRequest req, HttpServletResponse resp) throws
   IllegalArgumentException, IOException {
-    //checkSignature(req, resp);
     final PersistenceManager pm = PMF.get().getPersistenceManager();
     final Style style = new Style();
     style.setRevision("current");
@@ -229,7 +279,7 @@ public final class DAO {
     style.setMainMenuSelectedFontColor(req.getParameter("mainMenuSelectedFontColor"));
     pm.makePersistent(style);
     pm.close();
-    resp.getWriter().write(getId());
+    resp.getWriter().write(getDocumentId());
     resp.setStatus(200);
   }
   
@@ -242,7 +292,6 @@ public final class DAO {
    */
   public static void updatePage(HttpServletRequest req, HttpServletResponse resp) throws
   IllegalArgumentException, IOException {
-    //checkSignature(req, resp);
     final PersistenceManager pm = PMF.get().getPersistenceManager();
     final Page page = new Page();
     final SimpleDateFormat lastmod = new SimpleDateFormat("yyyy-MM-dd");
@@ -354,7 +403,7 @@ public final class DAO {
     page.setLastmod(lastmod.format(new Date()));
     pm.makePersistent(page);
     pm.close();
-    resp.getWriter().write(getId());
+    resp.getWriter().write(getDocumentId());
     resp.setStatus(200);
   }
 
@@ -367,7 +416,6 @@ public final class DAO {
    */
   public static void updateLanding(HttpServletRequest req, HttpServletResponse resp)
       throws IllegalArgumentException, IOException {
-    //checkSignature(req, resp);
     final PersistenceManager pm = PMF.get().getPersistenceManager();
     final Landing landing = new Landing();
     final SimpleDateFormat lastmod = new SimpleDateFormat("yyyy-MM-dd");
@@ -401,7 +449,7 @@ public final class DAO {
     landing.setLastmod(lastmod.format(new Date()));
     pm.makePersistent(landing);
     pm.close();
-    resp.getWriter().write(getId());
+    resp.getWriter().write(getDocumentId());
     resp.setStatus(200);
   }
 
@@ -414,7 +462,6 @@ public final class DAO {
    */
   public static void updateItem(HttpServletRequest req, HttpServletResponse resp)
       throws IllegalArgumentException, IOException {
-    //checkSignature(req, resp);
     final PersistenceManager pm = PMF.get().getPersistenceManager();
     final Item item = new Item();
     final SimpleDateFormat lastmod = new SimpleDateFormat("yyyy-MM-dd");
@@ -448,7 +495,7 @@ public final class DAO {
     item.setLastmod(lastmod.format(new Date()));
     pm.makePersistent(item);
     pm.close();
-    resp.getWriter().write(getId());
+    resp.getWriter().write(getDocumentId());
     resp.setStatus(200);
   }
   
@@ -462,7 +509,6 @@ public final class DAO {
    */
   public static void commitChange(HttpServletRequest req, HttpServletResponse resp) 
       throws IllegalArgumentException, IOException {
-    //checkSignature(req, resp);
     final PersistenceManager pm = PMF.get().getPersistenceManager();
     String revisionHistoryEnabled = "undefined";
     String revisionTimeDateStamp = "undefined";
@@ -552,7 +598,7 @@ public final class DAO {
       }
     }
     pm.close();
-    resp.getWriter().write(getId());
+    resp.getWriter().write(getDocumentId());
     resp.setStatus(200);
   }
 
@@ -588,7 +634,6 @@ public final class DAO {
     final List<Site> sites = (List<Site>) query.execute("current");
     Site site, detached = null;
     if (sites.isEmpty()) {
-      log.warning("sites was empty");
       site = new Site();
       site.setEmpty(true);
       return site;
@@ -661,7 +706,7 @@ public final class DAO {
     Page defaultPage = null;
     final Site site = getSite();
     if (site.isEmpty()) {
-      log.warning("Site was empty while getting default page");
+      log.warning("Site was empty while getting default page, creating new Page");
     }
     final List<Page> pages = getPageList();
     for (Page page: pages) {
@@ -799,65 +844,6 @@ public final class DAO {
     return item;
   }
 
-  /**
-   * Verifies the state of HttpServletRequest and HttpServletResponse parameters
-   * and that they originated as a result of an authorized Google Apps Script
-   * HTTP POST request to update the contents of the configuration data objects.
-   * <p>
-   * Values of all properties are stored in appengine-web.xml in the war/WEB-IMF
-   * directory and defined using the <property name="property" value="value"/>
-   * tag in the <system-properties> section of the document, where the name of
-   * the property is specified as class.property and the value is simply value.
-   */
-  private static void checkSignature(HttpServletRequest req, HttpServletResponse resp)
-      throws IllegalArgumentException, IllegalStateException {
-    try {
-      URL url = new URL("http://whois.arin.net/rest/ip/" + req.getRemoteAddr());
-      InputStreamReader input = new InputStreamReader(url.openStream());
-      BufferedReader reader = new BufferedReader(input);
-      String whois = reader.readLine();
-      reader.close();
-      int beginIndex = whois.indexOf("<name>") + "<name>".length();
-      int endIndex = whois.indexOf("</name>");
-      String name = whois.subSequence(beginIndex, endIndex).toString();
-      if (!name.equals("GOOGLE")) {
-        throw new IllegalStateException("invocation originated from " + name +
-            " not GOOGLE");
-      }
-      final String userAgent = req.getHeader("user-agent");
-      final String documentAgent = System.getProperty("documentAgent");
-      if (!userAgent.equals(documentAgent)) {
-        throw new IllegalStateException("invocation via unathorized agent " +
-            req.getHeader("user-agent"));
-      }
-      if (!req.getMethod().equalsIgnoreCase("post")) {
-        throw new IllegalStateException("invocation via " + req.getMethod() +
-            " not supported");
-      }
-      final String environment = 
-          System.getProperty("com.google.appengine.runtime.environment");
-      if (environment.equals("Production")) {
-        if (!req.getScheme().equals("https")) {
-          resp.setStatus(410);
-          throw new IllegalStateException("accessed via " + req.getScheme() +
-              " not supported");
-        }
-        String xAppEngineCountry = req.getHeader("X-AppEngine-Country");
-        final String documentCountry = System.getProperty("documentCountry");
-        if (!xAppEngineCountry.equals(documentCountry)) {
-          throw new IllegalStateException("accessed via unathorized country " +
-              xAppEngineCountry);
-        }
-      }
-    } catch (MalformedURLException e) {
-      log.warning("MalformedURLException " + e.getMessage());
-    } catch (IOException e) {
-      log.warning("IOException " + e.getMessage());
-    } catch (IllegalStateException e) {
-      throw new IllegalStateException(e.getMessage());
-    }
-  }
-  
   /**
    * Returns the Google Docs document ID of a spreadsheet which is authorized
    * to execute RESTful HTTP POST requests against this Data Access Object.

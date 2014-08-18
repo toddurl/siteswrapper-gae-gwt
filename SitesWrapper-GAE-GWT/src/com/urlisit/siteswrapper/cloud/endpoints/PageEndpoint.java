@@ -1,22 +1,23 @@
 package com.urlisit.siteswrapper.cloud.endpoints;
 
 import com.urlisit.siteswrapper.cloud.model.Page;
-import com.urlisit.siteswrapper.cloud.server.EMF;
+import com.urlisit.siteswrapper.cloud.server.PMF;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
 import com.google.api.server.spi.response.CollectionResponse;
 import com.google.appengine.api.datastore.Cursor;
-import com.google.appengine.datanucleus.query.JPACursorHelper;
+import com.google.appengine.datanucleus.query.JDOCursorHelper;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Nullable;
 import javax.inject.Named;
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityNotFoundException;
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
+import javax.jdo.PersistenceManager;
+import javax.jdo.Query;
 
 @Api(name = "pageendpoint", namespace = @ApiNamespace(ownerDomain = "urlisit.com", ownerName = "urlisit.com", packagePath = "siteswrapper.cloud.model"))
 public class PageEndpoint {
@@ -32,25 +33,26 @@ public class PageEndpoint {
   @ApiMethod(name = "listPage")
   public CollectionResponse<Page> listPage(@Nullable @Named("cursor") String cursorString, @Nullable @Named("limit") Integer limit) {
 
-    EntityManager mgr = null;
+    PersistenceManager mgr = null;
     Cursor cursor = null;
     List<Page> execute = null;
 
     try {
-      mgr = getEntityManager();
-      Query query = mgr.createQuery("select from Page as Page");
+      mgr = getPersistenceManager();
+      Query query = mgr.newQuery(Page.class);
       if (cursorString != null && cursorString != "") {
         cursor = Cursor.fromWebSafeString(cursorString);
-        query.setHint(JPACursorHelper.CURSOR_HINT, cursor);
+        HashMap<String, Object> extensionMap = new HashMap<String, Object>();
+        extensionMap.put(JDOCursorHelper.CURSOR_EXTENSION, cursor);
+        query.setExtensions(extensionMap);
       }
 
       if (limit != null) {
-        query.setFirstResult(0);
-        query.setMaxResults(limit);
+        query.setRange(0, limit);
       }
 
-      execute = (List<Page>) query.getResultList();
-      cursor = JPACursorHelper.getCursor(execute);
+      execute = (List<Page>) query.execute();
+      cursor = JDOCursorHelper.getCursor(execute);
       if (cursor != null)
         cursorString = cursor.toWebSafeString();
 
@@ -73,10 +75,10 @@ public class PageEndpoint {
    */
   @ApiMethod(name = "getPage")
   public Page getPage(@Named("id") Long id) {
-    EntityManager mgr = getEntityManager();
+    PersistenceManager mgr = getPersistenceManager();
     Page page = null;
     try {
-      page = mgr.find(Page.class, id);
+      page = mgr.getObjectById(Page.class, id);
     } finally {
       mgr.close();
     }
@@ -93,12 +95,12 @@ public class PageEndpoint {
    */
   @ApiMethod(name = "insertPage")
   public Page insertPage(Page page) {
-    EntityManager mgr = getEntityManager();
+    PersistenceManager mgr = getPersistenceManager();
     try {
       if (containsPage(page)) {
         throw new EntityExistsException("Object already exists");
       }
-      mgr.persist(page);
+      mgr.makePersistent(page);
     } finally {
       mgr.close();
     }
@@ -115,12 +117,12 @@ public class PageEndpoint {
    */
   @ApiMethod(name = "updatePage")
   public Page updatePage(Page page) {
-    EntityManager mgr = getEntityManager();
+    PersistenceManager mgr = getPersistenceManager();
     try {
       if (!containsPage(page)) {
         throw new EntityNotFoundException("Object does not exist");
       }
-      mgr.persist(page);
+      mgr.makePersistent(page);
     } finally {
       mgr.close();
     }
@@ -135,31 +137,30 @@ public class PageEndpoint {
    */
   @ApiMethod(name = "removePage")
   public void removePage(@Named("id") Long id) {
-    EntityManager mgr = getEntityManager();
+    PersistenceManager mgr = getPersistenceManager();
     try {
-      Page page = mgr.find(Page.class, id);
-      mgr.remove(page);
+      Page page = mgr.getObjectById(Page.class, id);
+      mgr.deletePersistent(page);
     } finally {
       mgr.close();
     }
   }
 
   private boolean containsPage(Page page) {
-    EntityManager mgr = getEntityManager();
+    PersistenceManager mgr = getPersistenceManager();
     boolean contains = true;
     try {
-      Page item = mgr.find(Page.class, page.getEncodedKey());
-      if (item == null) {
-        contains = false;
-      }
+      mgr.getObjectById(Page.class, page.getId());
+    } catch (javax.jdo.JDOObjectNotFoundException ex) {
+      contains = false;
     } finally {
       mgr.close();
     }
     return contains;
   }
 
-  private static EntityManager getEntityManager() {
-    return EMF.get().createEntityManager();
+  private static PersistenceManager getPersistenceManager() {
+    return PMF.get().getPersistenceManager();
   }
 
 }

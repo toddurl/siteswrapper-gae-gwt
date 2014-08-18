@@ -133,8 +133,9 @@
         "id" : "Page",
         "type" : "object",
         "properties" : {
-          "encodedKey" : {
-            "$ref" : "_any"
+          "key" : {
+            "type" : "string",
+            "format" : "int64"
           },
           "revision" : {
             "type" : "string"
@@ -244,6 +245,10 @@
           "lastmod" : {
             "type" : "string"
           },
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
           "backgroundImages" : {
             "type" : "array",
             "items" : {
@@ -266,10 +271,6 @@
             "$ref" : "JsonMap"
           }
         }
-      },
-      "_any" : {
-        "id" : "_any",
-        "type" : "any"
       },
       "DisplayLogoAs" : {
         "id" : "DisplayLogoAs",

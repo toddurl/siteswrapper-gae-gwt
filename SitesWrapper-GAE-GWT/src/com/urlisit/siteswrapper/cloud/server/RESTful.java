@@ -62,42 +62,55 @@ public final class RESTful extends HttpServlet implements Cloneable {
   @Override
   public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
     try {
-      if (req.getRequestURI().equals("/" + DAO.getId() + "/updateSite")) {
+      if (req.getRequestURI().equals("/isInitialized")) {
+        try {
+          DAO.isInitialized(req, resp);
+        } catch (IllegalStateException e) {
+          log.warning("IllegalStateException " + e.getMessage());
+        }
+      }
+      if (req.getRequestURI().equals("/" + DAO.getDocumentId() + "/updateSite")) {
+        log.warning("RESTful calling /updateSite");
         try {
           DAO.updateSite(req, resp);
         } catch (IllegalStateException e) {
           log.warning("IllegalStateException " + e.getMessage());
         }
       }
-      if (req.getRequestURI().equals("/" + DAO.getId() + "/updateStyle")) {
+      if (req.getRequestURI().equals("/" + DAO.getDocumentId() + "/updateStyle")) {
+        log.warning("RESTful calling /updateStyle");
         try {
           DAO.updateStyle(req, resp);
         } catch (IllegalStateException e) {
           log.warning("IllegalStateException " + e.getMessage());
         }
       }
-      if (req.getRequestURI().equals("/" + DAO.getId() + "/updateLanding")) {
+      if (req.getRequestURI().equals("/" + DAO.getDocumentId() + "/updateLanding")) {
+        log.warning("RESTful calling /updateLanding");
         try {
           DAO.updateLanding(req, resp);
         } catch (IllegalStateException e) {
           log.warning("IllegalStateException " + e.getMessage());
         }
       }
-      if (req.getRequestURI().equals("/" + DAO.getId() + "/updatePage")) {
+      if (req.getRequestURI().equals("/" + DAO.getDocumentId() + "/updatePage")) {
+        log.warning("RESTful calling /updatePage");
         try {
           DAO.updatePage(req, resp);
         } catch (IllegalStateException e) {
           log.warning("IllegalStateException " + e.getMessage());
         }
       }
-      if (req.getRequestURI().equals("/" + DAO.getId() + "/updateItem")) {
+      if (req.getRequestURI().equals("/" + DAO.getDocumentId() + "/updateItem")) {
+        log.warning("RESTful calling /updateItem");
         try {
           DAO.updateItem(req, resp);
         } catch (IllegalStateException e) {
           log.warning("IllegalStateException " + e.getMessage());
         }
       }
-      if (req.getRequestURI().equals("/" + DAO.getId() + "/commitChange")) {
+      if (req.getRequestURI().equals("/" + DAO.getDocumentId() + "/commitChange")) {
+        log.warning("RESTful calling /commitChange");
         try {
           DAO.commitChange(req, resp);
         } catch (IllegalStateException e) {
